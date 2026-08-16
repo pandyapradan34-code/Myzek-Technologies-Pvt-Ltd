@@ -13,33 +13,34 @@ export default function Footer() {
             Myzek Technologies Private Limited<br />
             Reliable power solutions for industrial manufacturing.
           </p>
+          <div style={{ marginTop: '1.5rem' }}>
+            <p className="new-footer-text" style={{ fontSize: '0.8rem' }}>
+              Email: sales@myzek.com<br />
+              Phone: +91 123 456 7890
+            </p>
+          </div>
         </div>
 
         <div className="new-footer-col">
           <h4>Company</h4>
           <Link to="/about" className="new-footer-link">About Us</Link>
-          <Link to="/applications" className="new-footer-link">Applications</Link>
           <Link to="/careers" className="new-footer-link">Careers</Link>
+          <Link to="/contact" className="new-footer-link">Contact Us</Link>
         </div>
 
         <div className="new-footer-col">
-          <h4>Products</h4>
+          <h4>Product &amp; Services</h4>
           <Link to="/products" className="new-footer-link">Power Supplies</Link>
           <Link to="/products" className="new-footer-link">DC-DC Converters</Link>
-          <Link to="/products" className="new-footer-link">Transceiver Modules</Link>
-          <Link to="/products" className="new-footer-link">Sensors</Link>
+          <Link to="/products" className="new-footer-link">Transceivers</Link>
+          <Link to="/applications" className="new-footer-link">All Applications</Link>
         </div>
 
         <div className="new-footer-col">
-          <h4>Get In Touch</h4>
-          <p className="new-footer-text" style={{ marginBottom: '0.75rem' }}>
-            Email: sales@myzek.com<br />
-            Phone: +91 123 456 7890
-          </p>
-          <p className="new-footer-text">
-            123 Industrial Park,<br />
-            Tech Hub, India
-          </p>
+          <h4>Legal &amp; Resources</h4>
+          <Link to="/" className="new-footer-link">Privacy Policy</Link>
+          <Link to="/" className="new-footer-link">Terms &amp; Conditions</Link>
+          <Link to="/contact" className="new-footer-link">Support</Link>
         </div>
 
       </div>

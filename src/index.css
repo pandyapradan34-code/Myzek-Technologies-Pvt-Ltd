@@ -22,6 +22,12 @@
   --color-text-on-dark: #eef2f5;
   --color-text-on-dark-muted: #a8b7c3;
 
+  /* Aliases for new components */
+  --color-brand-dark: #0a2338;
+  --color-brand-blue: #123a5c;
+  --color-brand-orange: #e8871e;
+  --color-brand-muted: #57636e;
+
   /* Typography */
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-display: 'Saira Semi Condensed', system-ui, sans-serif;
@@ -1126,4 +1132,22 @@ img {
 
 @media (prefers-reduced-motion:reduce){
   .new-navbar-link::after{ transition:none; }
+}
+
+/* ---------- GENERIC SCROLL REVEAL ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal.delay-1 { transition-delay: 0.1s; }
+.reveal.delay-2 { transition-delay: 0.2s; }
+.reveal.delay-3 { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion:reduce){
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
