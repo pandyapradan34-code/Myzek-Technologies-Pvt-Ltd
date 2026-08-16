@@ -22,18 +22,19 @@
   --color-text-on-dark: #eef2f5;
   --color-text-on-dark-muted: #a8b7c3;
 
-  /* Type */
-  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  /* Typography */
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Saira Semi Condensed', system-ui, sans-serif;
+  --font-structural: 'Saira Semi Condensed', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 
-  /* Spacing scale (4px base) */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 1rem;
-  --space-4: 1.5rem;
-  --space-5: 2rem;
-  --space-6: 3rem;
+  /* Spacing */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
   --space-7: 4rem;
   --space-8: 6rem;
 
@@ -323,7 +324,7 @@ img {
   display: grid;
   place-items: center;
   padding: 56px 44px;
-  background: radial-gradient(ellipse at center, rgba(77, 141, 246, 0.14) 0%, rgba(15, 32, 56, 0) 70%);
+  background: none;
 }
 
 .scan {
@@ -334,11 +335,11 @@ img {
 
 .scan img {
   width: 100%;
-  max-width: 460px;
+  max-width: 640px;
   height: auto;
   display: block;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45));
   clip-path: inset(0 0 0 0);
+  mix-blend-mode: screen;
 }
 
 .scan .beam {
@@ -354,8 +355,7 @@ img {
 }
 
 .scan.play img {
-  animation: scanReveal var(--scan-dur) var(--scan-ease) both,
-    scanBloom .9s ease-out var(--scan-dur) both;
+  animation: scanReveal var(--scan-dur) var(--scan-ease) both;
 }
 
 .scan.play .beam {
@@ -375,12 +375,30 @@ img {
 }
 
 @keyframes scanBloom {
-  from {
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 26px rgba(77, 141, 246, 0.65));
-  }
-  to {
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 0 rgba(77, 141, 246, 0));
-  }
+  /* removed */
+}
+
+.scan::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(77, 141, 246, 0.2) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+}
+
+.scan.play::after {
+  animation: glowIn 1s ease-out var(--scan-dur) forwards;
+}
+
+@keyframes glowIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
