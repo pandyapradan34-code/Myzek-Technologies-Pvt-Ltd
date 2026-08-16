@@ -1,6 +1,34 @@
-import companyLogo from '../../WhatsApp Image 2026-08-16 at 7.57.32 PM.jpeg'
+import { useEffect, useRef } from 'react'
+import companyLogo from '../assets/myzek-logo-light.png'
+
 
 export default function Home() {
+  const logoRef = useRef(null)
+
+  useEffect(() => {
+    const logo = logoRef.current
+    if (!logo) return undefined
+
+    const play = () => logo.classList.add('play')
+    if (!('IntersectionObserver' in window)) {
+      play()
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          play()
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.35 },
+    )
+
+    observer.observe(logo)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="page page-home">
       {/* HERO / BANNER — currently 1 static banner. Swap the copy below for
@@ -25,8 +53,11 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="hero-logo-panel">
-            <img src={companyLogo} alt="Myzek Technologies Private Limited" />
+          <div className="logo-stage">
+            <div className="scan" ref={logoRef}>
+              <img src={companyLogo} alt="Myzek Technologies Private Limited" />
+              <span className="beam" />
+            </div>
           </div>
 
         </div>
