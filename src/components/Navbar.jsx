@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import companyLogo from '../../WhatsApp Image 2026-08-16 at 7.57.32 PM.jpeg'
 
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
@@ -16,10 +17,7 @@ export default function Navbar() {
     <header className="navbar">
       <div className="navbar-inner container">
         <NavLink to="/" className="navbar-logo" onClick={() => setOpen(false)}>
-          <span className="navbar-logo-mark">MZ</span>
-          <span className="navbar-logo-text">
-            MYZEK <span>TECHNOLOGIES</span>
-          </span>
+          <img className="navbar-logo-image" src={companyLogo} alt="Myzek Technologies Private Limited" />
         </NavLink>
 
         <button

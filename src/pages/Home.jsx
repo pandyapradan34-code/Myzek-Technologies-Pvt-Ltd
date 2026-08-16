@@ -1,3 +1,5 @@
+import companyLogo from '../../WhatsApp Image 2026-08-16 at 7.57.32 PM.jpeg'
+
 export default function Home() {
   return (
     <div className="page page-home">
@@ -23,10 +25,10 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="placeholder-media" role="img" aria-label="Banner image placeholder">
-            <span className="placeholder-media-icon">🖼</span>
-            <span>Banner / product photo — 1200 × 900px</span>
+          <div className="hero-logo-panel">
+            <img src={companyLogo} alt="Myzek Technologies Private Limited" />
           </div>
+
         </div>
       </section>
 
