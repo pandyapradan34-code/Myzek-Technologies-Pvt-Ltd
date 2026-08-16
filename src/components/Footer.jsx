@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import companyLogo from '../../WhatsApp Image 2026-08-16 at 7.57.32 PM.jpeg'
 
+
 export default function Footer() {
   return (
     <footer className="new-footer">
