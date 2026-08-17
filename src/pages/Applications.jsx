@@ -88,7 +88,7 @@ const APPLICATION_AREAS = [
 export default function Applications() {
   return (
     <div className="page page-applications">
-      <section className="page-header" style={{ textAlign: 'center', padding: '4rem 1rem' }}>
+      <section className="page-header" style={{ textAlign: 'center' }}>
         <div className="container">
           <p className="eyebrow">Applications</p>
           <h1 style={{ marginBottom: '1.5rem' }}>Powering Innovation Across Industries</h1>

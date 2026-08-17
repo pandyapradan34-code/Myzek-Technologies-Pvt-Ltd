@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import companyLogo from '../../WhatsApp Image 2026-08-16 at 7.57.32 PM.jpeg'
+import companyLogo from '../assets/WhatsApp Image 2026-08-16 at 7.57.32 PM.jpeg'
 
 const NAV_LINKS = [
   { to: '/', label: 'Home' },

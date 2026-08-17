@@ -73,7 +73,9 @@ export default function Home() {
           </div>
           <div className="logo-stage">
             <div className="scan" ref={logoRef}>
-              <img src={companyLogo} alt="Myzek Technologies Private Limited" />
+              <div className="logo-shine" style={{ '--logo': `url(${companyLogo})` }}>
+                <img src={companyLogo} alt="Myzek Technologies Private Limited" />
+              </div>
               <span className="beam" />
             </div>
           </div>

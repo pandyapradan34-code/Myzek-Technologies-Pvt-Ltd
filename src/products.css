@@ -1,13 +1,10 @@
 /* --- NEW PRODUCTS PAGE LAYOUT --- */
 
 .page-products .page-header {
-  background-color: var(--color-bg);
-  padding: 8rem 0 4rem;
   text-align: center;
 }
 
 .page-products .page-header .eyebrow {
-  color: var(--color-brand-orange);
   font-family: var(--font-structural);
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -17,7 +14,6 @@
 
 .page-products .page-header h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
-  color: var(--color-brand-dark);
 }
 
 .products-section {

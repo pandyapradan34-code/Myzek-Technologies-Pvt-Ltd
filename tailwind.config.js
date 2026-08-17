@@ -16,6 +16,15 @@ export default {
         'saira': ['"Saira Semi Condensed"', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
       },
+      keyframes: {
+        'logo-shine-sweep': {
+          'from': { backgroundPosition: '180% 0' },
+          'to': { backgroundPosition: '-80% 0' },
+        }
+      },
+      animation: {
+        'logo-shine-sweep': 'logo-shine-sweep 4s linear infinite',
+      }
     },
   },
   plugins: [],

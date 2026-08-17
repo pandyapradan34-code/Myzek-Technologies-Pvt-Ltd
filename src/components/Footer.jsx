@@ -1,14 +1,41 @@
 import { Link } from 'react-router-dom'
-import companyLogo from '../../WhatsApp Image 2026-08-16 at 7.57.32 PM.jpeg'
-
+import companyLogo from '../assets/WhatsApp Image 2026-08-16 at 7.57.32 PM.jpeg'
+import { useEffect, useRef } from 'react'
 
 export default function Footer() {
+  const footerRef = useRef(null)
+
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('footer-animate')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    const cols = footerRef.current?.querySelectorAll('.new-footer-col')
+    if (cols) {
+      cols.forEach(col => observer.observe(col))
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <footer className="new-footer">
+    <footer className="new-footer" ref={footerRef}>
       <div className="new-footer-inner">
         
         <div className="new-footer-col">
-          <img src={companyLogo} alt="Myzek Logo" style={{ height: '48px', marginBottom: '1.5rem', borderRadius: '4px' }} />
+          <div className="logo-shine" style={{ '--logo': `url("${companyLogo}")`, display: 'inline-block', marginBottom: '1.5rem' }}>
+            <img src={companyLogo} alt="Myzek Logo" style={{ height: '48px', borderRadius: '4px' }} />
+          </div>
           <p className="new-footer-text">
             Myzek Technologies Private Limited<br />
             Reliable power solutions for industrial manufacturing.
