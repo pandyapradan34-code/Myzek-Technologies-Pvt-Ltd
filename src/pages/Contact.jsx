@@ -10,7 +10,6 @@ export default function Contact() {
         </div>
       </section>
 
-
       <section className="container section contact-grid">
         {/* OFFICE / HQ */}
         <div className="contact-locations">
@@ -55,7 +54,7 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* CONTACT FORM (UI only — not yet wired to a backend) */}
+        {/* CONTACT FORM */}
         <form className="form" onSubmit={(e) => e.preventDefault()}>
           <div className="form-row">
             <div className="form-field">
@@ -89,7 +88,6 @@ export default function Contact() {
           </button>
         </form>
       </section>
-      
     </div>
   )
 }

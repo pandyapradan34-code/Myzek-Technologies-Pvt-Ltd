@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import companyLogo from '../assets/WhatsApp Image 2026-08-16 at 7.57.32 PM.jpeg'
+import companyLogo from '../assets/myzek-logo-light.png'
 import { useEffect, useRef } from 'react'
 
 export default function Footer() {
@@ -33,12 +33,13 @@ export default function Footer() {
       <div className="new-footer-inner">
         
         <div className="new-footer-col">
-          <div className="logo-shine" style={{ '--logo': `url("${companyLogo}")`, display: 'inline-block', marginBottom: '1.5rem' }}>
-            <img src={companyLogo} alt="Myzek Logo" style={{ height: '48px', borderRadius: '4px' }} />
+          <div className="logo-shine" style={{ '--logo': `url(${companyLogo})`, display: 'inline-block', marginBottom: '1.5rem' }}>
+            <img src={companyLogo} alt="Myzek Logo" style={{ height: '48px' }} />
           </div>
           <p className="new-footer-text">
-            Myzek Technologies Private Limited<br />
-            Reliable power solutions for industrial manufacturing.
+            YOUR PARTNER IN ELECTRONIC COMPONENTS <br />
+            An authorized distributor and stockist of electronic components, 
+            supporting industrial, OEM and technology-driven customers across India.
           </p>
           <div style={{ marginTop: '1.5rem' }}>
             <p className="new-footer-text" style={{ fontSize: '0.8rem' }}>
