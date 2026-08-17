@@ -7,6 +7,8 @@
 :root {
   --scan-dur: 1.6s;
   --scan-ease: cubic-bezier(.65, 0, .35, 1);
+ --eyebrow-size: 0.875rem;
+  --eyebrow-track: 0.110em;
 
   /* Color */
   --color-ink: #10202e;
@@ -1150,4 +1152,65 @@ img {
 
 @media (prefers-reduced-motion:reduce){
   .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+
+/* Stat panel — typography only */
+.ab-facts dd {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  font-variant-numeric: tabular-nums;
+  text-transform: none;
+}
+
+.ab-facts dt {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.ab-eyebrow,
+.eyebrow,
+.ab-flabel {
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-track);
+  line-height: 1.3;
+}
+
+
+/* Footer — match all text to the heading colour */
+.new-footer,
+.new-footer p,
+.new-footer a,
+.new-footer li,
+.new-footer .new-footer-bottom {
+  color: #fff;
+}
+
+.new-footer a {
+  transition: color 0.18s ease;
+}
+
+.new-footer a:hover,
+.new-footer a:focus-visible {
+  color: var(--copper, #a65a2e);
+}
+
+/* Button typography — unified across the site */
+.btn,
+.btn-accent,
+.btn-outline,
+.btn-primary,
+.ab-btn,
+button {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
 }

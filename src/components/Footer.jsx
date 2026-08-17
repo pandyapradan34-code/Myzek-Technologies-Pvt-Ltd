@@ -15,8 +15,9 @@ export default function Footer() {
           </p>
           <div style={{ marginTop: '1.5rem' }}>
             <p className="new-footer-text" style={{ fontSize: '0.8rem' }}>
-              Email: sales@myzek.com<br />
-              Phone: +91 123 456 7890
+              Email: info@myzektechnologies.com<br />
+              Phone: +91 83474 69999 <br/>
+              Whatsapp.no:+91 83474 69999
             </p>
           </div>
         </div>
@@ -24,7 +25,6 @@ export default function Footer() {
         <div className="new-footer-col">
           <h4>Company</h4>
           <Link to="/about" className="new-footer-link">About Us</Link>
-          <Link to="/careers" className="new-footer-link">Careers</Link>
           <Link to="/contact" className="new-footer-link">Contact Us</Link>
         </div>
 
