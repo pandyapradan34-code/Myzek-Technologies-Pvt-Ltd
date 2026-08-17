@@ -1214,3 +1214,80 @@ button {
   text-transform: uppercase;
   line-height: 1;
 }
+
+/* ============ FOOTER TOP SWEEP ============ */
+
+.new-footer {
+  position: relative;
+  overflow: hidden;
+}
+
+.new-footer-inner,
+.new-footer-bottom {
+  position: relative;
+  z-index: 2;
+}
+
+.new-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--copper, #a65a2e),
+    transparent
+  );
+  background-size: 40% 100%;
+  background-repeat: no-repeat;
+  animation: footerSweep 3s linear infinite;
+}
+
+@keyframes footerSweep {
+  from { background-position: -40% 0; }
+  to   { background-position: 140% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-footer::before {
+    animation: none;
+    background: var(--copper, #a65a2e);
+    opacity: 0.4;
+  }
+}
+
+
+/* ============ FOOTER SPACING ============ */
+
+.new-footer {
+  padding-top: 1.75rem;
+  padding-bottom: 0;
+}
+
+.new-footer-inner {
+  padding-top: 0;
+  padding-bottom: 1.5rem;
+  gap: 1.5rem;
+}
+
+.new-footer-bottom {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  margin-top: 0;
+}
+
+/* Tighten the stacked text blocks */
+.new-footer p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.new-footer-col a {
+  margin-bottom: 0.4rem;
+}

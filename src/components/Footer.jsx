@@ -10,8 +10,9 @@ export default function Footer() {
         <div className="new-footer-col">
           <img src={companyLogo} alt="Myzek Logo" style={{ height: '48px', marginBottom: '1.5rem', borderRadius: '4px' }} />
           <p className="new-footer-text">
-            Myzek Technologies Private Limited<br />
-            Reliable power solutions for industrial manufacturing.
+            YOUR PARTNER IN ELECTRONIC COMPONENTS <br />
+            An authorized distributor and stockist of electronic components, 
+            supporting industrial, OEM and technology-driven customers across India.
           </p>
           <div style={{ marginTop: '1.5rem' }}>
             <p className="new-footer-text" style={{ fontSize: '0.8rem' }}>
