@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import products from '../data/products.js'
+import distributors from '../data/products.js'
 
 function ProductItem({ item }) {
   if (typeof item === 'string') return (
@@ -21,27 +21,38 @@ function ProductItem({ item }) {
 export default function Products() {
   const [searchQuery, setSearchQuery] = useState('')
 
-  // Filter products based on search query
-  const filteredProducts = products.filter((product) => {
-    if (!searchQuery) return true
+  // Filter distributors and their products based on search query
+  const filteredDistributors = distributors.map(distributor => {
+    if (!searchQuery) return distributor;
     
-    const query = searchQuery.toLowerCase()
+    const query = searchQuery.toLowerCase();
     
-    // Check if category name matches
-    if (product.name.toLowerCase().includes(query)) return true
-    
-    // Check if any group or item inside matches
-    for (const group of product.groups) {
-      if (group.name && group.name.toLowerCase().includes(query)) return true
-      
-      for (const item of group.items) {
-        const itemName = typeof item === 'string' ? item : item.name
-        if (itemName.toLowerCase().includes(query)) return true
-      }
+    // If the distributor name matches, return the whole distributor with all its products
+    if (distributor.name.toLowerCase().includes(query)) {
+      return distributor;
     }
     
-    return false
-  })
+    // Otherwise, filter its products
+    const filteredProducts = distributor.products.filter(product => {
+      if (product.name.toLowerCase().includes(query)) return true;
+      
+      for (const group of product.groups) {
+        if (group.name && group.name.toLowerCase().includes(query)) return true;
+        for (const item of group.items) {
+          const itemName = typeof item === 'string' ? item : item.name;
+          if (itemName.toLowerCase().includes(query)) return true;
+        }
+      }
+      return false;
+    });
+    
+    // Only return the distributor if it has matching products
+    if (filteredProducts.length > 0) {
+      return { ...distributor, products: filteredProducts };
+    }
+    
+    return null;
+  }).filter(Boolean);
 
   return (
     <div className="page page-products">
@@ -68,41 +79,80 @@ export default function Products() {
           />
         </div>
         
-        {filteredProducts.length === 0 ? (
+        {filteredDistributors.length === 0 ? (
           <div className="products-no-results">
             No products found matching "{searchQuery}"
           </div>
         ) : (
-          <div className="product-catalog">
-            {filteredProducts.map((product, index) => (
-              <article className="product-card" data-aos="fade-up" key={product.name}>
-                <div className="product-card-accent" data-aos="fade-up"></div>
-                <div className="product-card-content" data-aos="fade-up">
-                  <div className="product-card-index" data-aos="fade-up">{String(index + 1).padStart(2, '0')}</div>
+          <div className="distributors-list">
+            {filteredDistributors.map((distributor, distIndex) => (
+              <div className="distributor-section" key={distributor.name}>
+                <div className="distributor-header" data-aos="fade-up">
+                  <h2 className="distributor-name">{distributor.name}</h2>
+                  <p className="distributor-about">{distributor.about}</p>
                   
-                  <h3 className="product-card-title" data-aos="fade-up">{product.name}</h3>
-                  {product.range && <p className="product-card-range" data-aos="fade-up">{product.range}</p>}
-                  {!product.range && <div style={{ height: '2rem' }}></div>}
-                  
-                  <div className="product-groups">
-                    {product.groups.map((group, groupIndex) => (
-                      <div className="product-group" key={group.name || groupIndex}>
-                        {group.name && (
-                          <h4 className="product-group-title">
-                            {group.name} 
-                            {group.range && <span>{group.range}</span>}
-                          </h4>
-                        )}
-                        <ul className="product-item-list">
-                          {group.items.map((item) => (
-                            <ProductItem item={item} key={typeof item === 'string' ? item : item.name} />
-                          ))}
-                        </ul>
-                      </div>
+                  {distributor.stats && (
+                    <div className="distributor-stats">
+                      {distributor.stats.map(stat => (
+                        <div className="distributor-stat-item" key={stat.label}>
+                          <div className="distributor-stat-value">{stat.value}</div>
+                          <div className="distributor-stat-label">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {distributor.strengths && (
+                    <div className="distributor-strengths">
+                      {distributor.strengths.map(strength => (
+                        <div className="distributor-strength-card" key={strength.title}>
+                          <h4 className="distributor-strength-title">{strength.title}</h4>
+                          <p className="distributor-strength-desc">{strength.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {distributor.products.length > 0 ? (
+                  <div className="product-catalog">
+                    {distributor.products.map((product, index) => (
+                      <article className="product-card" data-aos="fade-up" key={product.name}>
+                        <div className="product-card-accent" data-aos="fade-up"></div>
+                        <div className="product-card-content" data-aos="fade-up">
+                          <div className="product-card-index" data-aos="fade-up">{String(index + 1).padStart(2, '0')}</div>
+                          
+                          <h3 className="product-card-title" data-aos="fade-up">{product.name}</h3>
+                          {product.range && <p className="product-card-range" data-aos="fade-up">{product.range}</p>}
+                          {!product.range && <div style={{ height: '2rem' }}></div>}
+                          
+                          <div className="product-groups">
+                            {product.groups.map((group, groupIndex) => (
+                              <div className="product-group" key={group.name || groupIndex}>
+                                {group.name && (
+                                  <h4 className="product-group-title">
+                                    {group.name} 
+                                    {group.range && <span>{group.range}</span>}
+                                  </h4>
+                                )}
+                                <ul className="product-item-list">
+                                  {group.items.map((item) => (
+                                    <ProductItem item={item} key={typeof item === 'string' ? item : item.name} />
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </article>
                     ))}
                   </div>
-                </div>
-              </article>
+                ) : (
+                  <div className="distributor-products-empty">
+                    Products coming soon.
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         )}

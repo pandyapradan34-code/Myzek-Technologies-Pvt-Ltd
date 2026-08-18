@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import companyLogo from '../assets/myzek-logo-light.png'
-import products from '../data/products.js'
+import distributors from '../data/products.js'
 
 
 export default function Home() {
@@ -116,7 +116,7 @@ export default function Home() {
             </p>
           </div>
           <div className="card-grid" data-aos="fade-up">
-            {products.slice(0, 3).map(
+            {distributors.flatMap(d => d.products).slice(0, 3).map(
               (product, idx) => (
                 <div className={`card reveal delay-${(idx % 3) + 1}`} key={product.name}>
                   <div className="placeholder-media">

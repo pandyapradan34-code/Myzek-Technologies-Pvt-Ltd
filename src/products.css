@@ -234,3 +234,128 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+/* --- DISTRIBUTOR SECTION --- */
+.distributors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.distributor-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.distributor-header {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.distributor-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-accent);
+}
+
+.distributor-name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.distributor-about {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 800px;
+}
+
+.distributor-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.distributor-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.distributor-stat-value {
+  font-size: 2.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.distributor-stat-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.distributor-strengths {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.distributor-strength-card {
+  background: var(--color-bg-alt);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.distributor-strength-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px -2px rgba(0,0,0,0.08);
+}
+
+.distributor-strength-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.distributor-strength-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.distributor-products-empty {
+  text-align: center;
+  padding: 3rem;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius);
+  border: 1px dashed var(--color-border);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
