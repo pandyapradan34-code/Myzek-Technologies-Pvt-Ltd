@@ -4,13 +4,17 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #E5E7EB;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
   z-index: 50;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .new-navbar.scrolled {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E5E7EB;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -18,10 +22,15 @@
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 1.5rem;
-  height: 76px;
+  height: 86px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: height 0.3s ease;
+}
+
+.new-navbar.scrolled .new-navbar-inner {
+  height: 64px;
 }
 
 .new-navbar-brand {

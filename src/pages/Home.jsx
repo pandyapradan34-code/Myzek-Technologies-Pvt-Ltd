@@ -83,7 +83,7 @@ export default function Home() {
       </section>
 
       {/* 2. ABOUT US SECTION */}
-      <section className="section reveal delay-1">
+      <section className="section reveal delay-1" data-aos="fade-up">
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
           <div>
             <p className="eyebrow">About Myzek</p>
@@ -106,16 +106,16 @@ export default function Home() {
       </section>
 
       {/* 3. PRODUCT / APPLICATION SECTION */}
-      <section className="section section-alt">
+      <section className="section section-alt" data-aos="fade-up">
         <div className="container">
-          <div className="section-intro reveal delay-1">
+          <div className="section-intro reveal delay-1" data-aos="fade-up">
             <p className="eyebrow">Products</p>
             <h2>Our Core Offerings</h2>
             <p style={{ maxWidth: '68ch' }}>
               Explore our premium range of power solutions, designed for high efficiency and industrial reliability.
             </p>
           </div>
-          <div className="card-grid">
+          <div className="card-grid" data-aos="fade-up">
             {products.slice(0, 3).map(
               (product, idx) => (
                 <div className={`card reveal delay-${(idx % 3) + 1}`} key={product.name}>
@@ -138,8 +138,8 @@ export default function Home() {
       </section>
 
       {/* 4. FEATURES / SERVICES SECTION (Applications) */}
-      <section className="container section reveal delay-1">
-        <div className="section-intro">
+      <section className="container section reveal delay-1" data-aos="fade-up">
+        <div className="section-intro" data-aos="fade-up">
           <p className="eyebrow">Applications</p>
           <h2>Industries We Serve</h2>
           <p style={{ maxWidth: '68ch' }}>
@@ -163,8 +163,8 @@ export default function Home() {
       </section>
 
       {/* 5. TRUST STRIP (Other Important Sections) */}
-      <section className="container section reveal delay-1">
-        <div className="section-intro" style={{ textAlign: 'center', margin: '0 auto 3rem' }}>
+      <section className="container section reveal delay-1" data-aos="fade-up">
+        <div className="section-intro" data-aos="fade-up" style={{ textAlign: 'center', margin: '0 auto 3rem' }}>
           <p className="eyebrow">Trusted By</p>
           <h2>Certifications &amp; Partners</h2>
         </div>
@@ -178,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* 6. CONTACT / CTA SECTION */}
-      <section className="section reveal delay-1" style={{ backgroundColor: 'var(--color-primary)', color: 'white', textAlign: 'center', padding: '6rem 2rem' }}>
+      <section className="section reveal delay-1" data-aos="fade-up" style={{ backgroundColor: 'var(--color-primary)', color: 'white', textAlign: 'center', padding: '6rem 2rem' }}>
         <div className="container">
           <h2 style={{ color: 'white', marginBottom: '1.5rem' }}>Ready to elevate your operations?</h2>
           <p style={{ color: 'var(--color-text-on-dark-muted)', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.1rem' }}>

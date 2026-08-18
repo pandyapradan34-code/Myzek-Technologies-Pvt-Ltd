@@ -1,0 +1,126 @@
+.key-markets-section {
+  width: 100%;
+  padding: 80px 20px;
+  background-color: #FFFFFF;
+}
+
+.key-markets-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.key-markets-header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .key-markets-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.key-markets-title-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.key-markets-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #E08A2B;
+}
+
+.key-markets-divider {
+  width: 40px;
+  height: 2px;
+  background-color: #E08A2B;
+}
+
+.key-markets-h2 {
+  font-family: var(--font-display, 'Arial Narrow', sans-serif);
+  font-size: 32px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #0F2338;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.key-markets-desc-col {
+  max-width: 34ch;
+}
+
+.key-markets-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6B7280;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.key-markets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.key-markets-card {
+  background-color: #F7F6F3;
+  border-radius: 12px;
+  padding: 16px 20px;
+  /* No border, no hover state, no shadow */
+}
+
+.key-markets-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.key-markets-icon {
+  color: #E08A2B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.key-markets-icon svg {
+  display: block;
+}
+
+.key-markets-card-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0F2338;
+  margin: 0;
+}
+
+.key-markets-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.8;
+  font-size: 13px;
+  font-weight: 400;
+  color: #6B7280;
+  display: block;
+}
+
+.key-markets-list-item {
+  display: inline;
+}
+
+.key-markets-list-item:not(:last-child)::after {
+  content: '\00A0\00B7\00A0';
+  color: #6B7280;
+}

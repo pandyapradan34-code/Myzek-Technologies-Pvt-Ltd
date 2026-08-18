@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
@@ -10,9 +11,19 @@ import Contact from './pages/Contact.jsx'
 import RequestSample from './pages/RequestSample.jsx'
 import NotFound from './pages/NotFound.jsx'
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 // Every page URL for the site lives here. Add a new <Route> + page file
 // under src/pages/ any time a new page is needed.
 export default function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true, // whether animation should happen only once - while scrolling down
+    })
+  }, [])
+
   return (
     <div className="site">
       <Navbar />

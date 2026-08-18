@@ -39,8 +39,8 @@
 //         </div>
 //       </section>
 
-//       <section className="container section about-story">
-//         <div className="section-intro"><h2>Built on responsive service</h2></div>
+//       <section className="container section about-story" data-aos="fade-up">
+//         <div className="section-intro" data-aos="fade-up"><h2>Built on responsive service</h2></div>
 //         <div className="about-copy">
 //           <p>Myzek Technologies Pvt Ltd is a leading authorized distributor and stockist of electronic components. Since 2017, we have built our business on strong customer relationships, responsive service, and value-driven solutions.</p>
 //           <p>Today, we serve hundreds of customers in partnership with leading global suppliers. We support every stage of the sourcing journey with competitive pricing, ready-stock availability, and reliable technical support.</p>
@@ -49,9 +49,9 @@
 //         </div>
 //       </section>
 
-//       <section className="section section-alt">
+//       <section className="section section-alt" data-aos="fade-up">
 //         <div className="container">
-//           <div className="section-intro">
+//           <div className="section-intro" data-aos="fade-up">
 //             <p className="eyebrow">Industries we serve</p>
 //             <h2>Our key markets</h2>
 //             <p>We serve industrial, OEM, and technology-driven customers across high-growth sectors.</p>

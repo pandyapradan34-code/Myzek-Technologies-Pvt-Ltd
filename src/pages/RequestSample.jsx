@@ -8,7 +8,7 @@ export default function RequestSample() {
         </div>
       </section>
 
-      <section className="container section">
+      <section className="container section" data-aos="fade-up">
         <p style={{ maxWidth: '60ch', marginBottom: 'var(--space-5)' }}>
           Fill out the form below and our team will follow up with sample availability
           and lead time.

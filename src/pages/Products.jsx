@@ -52,8 +52,8 @@ export default function Products() {
         </div>
       </section>
 
-      <section className="products-section">
-        <div className="section-intro">
+      <section className="products-section" data-aos="fade-up">
+        <div className="section-intro" data-aos="fade-up">
           <h2>Product Portfolio</h2>
           <p>Explore our complete range of premium power supplies, converters, communication modules, drivers, sensors, and EMC solutions built for industrial reliability.</p>
         </div>
@@ -75,13 +75,13 @@ export default function Products() {
         ) : (
           <div className="product-catalog">
             {filteredProducts.map((product, index) => (
-              <article className="product-card" key={product.name}>
-                <div className="product-card-accent"></div>
-                <div className="product-card-content">
-                  <div className="product-card-index">{String(index + 1).padStart(2, '0')}</div>
+              <article className="product-card" data-aos="fade-up" key={product.name}>
+                <div className="product-card-accent" data-aos="fade-up"></div>
+                <div className="product-card-content" data-aos="fade-up">
+                  <div className="product-card-index" data-aos="fade-up">{String(index + 1).padStart(2, '0')}</div>
                   
-                  <h3 className="product-card-title">{product.name}</h3>
-                  {product.range && <p className="product-card-range">{product.range}</p>}
+                  <h3 className="product-card-title" data-aos="fade-up">{product.name}</h3>
+                  {product.range && <p className="product-card-range" data-aos="fade-up">{product.range}</p>}
                   {!product.range && <div style={{ height: '2rem' }}></div>}
                   
                   <div className="product-groups">

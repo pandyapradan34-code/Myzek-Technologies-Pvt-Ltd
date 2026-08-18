@@ -106,11 +106,11 @@ export default function Applications() {
         </div>
       </section>
 
-      <section className="container section">
-        <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>Our Application Areas</h2>
-        <div className="card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-          {APPLICATION_AREAS.map((area) => (
-            <div className="card" key={area.name} style={{ padding: '2rem' }}>
+      <section className="container section" data-aos="fade-up">
+        <h2 style={{ textAlign: 'center', marginBottom: '3rem' }} data-aos="fade-up">Our Application Areas</h2>
+        <div className="card-grid" data-aos="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          {APPLICATION_AREAS.map((area, index) => (
+            <div className="card" key={area.name} style={{ padding: '2rem' }} data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{area.icon}</div>
               <h3 style={{ marginBottom: '1rem' }}>{area.name}</h3>
               <p style={{ marginBottom: '1.5rem' }}>{area.description}</p>
@@ -123,30 +123,30 @@ export default function Applications() {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--color-surface)', padding: '4rem 1rem' }}>
+      <section className="section" data-aos="fade-up" style={{ background: 'var(--color-surface)', padding: '4rem 1rem' }}>
         <div className="container">
           <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>From Prototype to Production</h2>
           <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem', fontSize: '1.1rem' }}>
             Our support extends across the complete product development and production lifecycle.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
-            <div className="card" style={{ padding: '1.5rem' }}>
+            <div className="card" data-aos="fade-up" style={{ padding: '1.5rem' }}>
               <h3 style={{ marginBottom: '0.5rem' }}>Design & Prototyping</h3>
               <p>Source components for new product development, prototypes, and engineering projects.</p>
             </div>
-            <div className="card" style={{ padding: '1.5rem' }}>
+            <div className="card" data-aos="fade-up" style={{ padding: '1.5rem' }}>
               <h3 style={{ marginBottom: '0.5rem' }}>Engineering Support</h3>
               <p>Help identify suitable components based on technical specifications, application requirements, and availability.</p>
             </div>
-            <div className="card" style={{ padding: '1.5rem' }}>
+            <div className="card" data-aos="fade-up" style={{ padding: '1.5rem' }}>
               <h3 style={{ marginBottom: '0.5rem' }}>Pilot Production</h3>
               <p>Support initial production requirements while maintaining sourcing flexibility.</p>
             </div>
-            <div className="card" style={{ padding: '1.5rem' }}>
+            <div className="card" data-aos="fade-up" style={{ padding: '1.5rem' }}>
               <h3 style={{ marginBottom: '0.5rem' }}>Volume Production</h3>
               <p>Provide competitive sourcing and supply support for larger production requirements.</p>
             </div>
-            <div className="card" style={{ padding: '1.5rem' }}>
+            <div className="card" data-aos="fade-up" style={{ padding: '1.5rem' }}>
               <h3 style={{ marginBottom: '0.5rem' }}>Long-Term Supply</h3>
               <p>Help customers maintain component availability and supply continuity throughout the product lifecycle.</p>
             </div>
@@ -154,12 +154,12 @@ export default function Applications() {
         </div>
       </section>
 
-      <section className="container section" style={{ paddingBottom: '5rem' }}>
+      <section className="container section" data-aos="fade-up" style={{ paddingBottom: '5rem' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>Why Myzek for Your Application?</h2>
         <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem', fontSize: '1.1rem' }}>
           We combine product availability, sourcing expertise, and responsive customer support to help businesses manage their electronic component requirements.
         </p>
-        <div className="card" style={{ padding: '3rem', margin: '0 auto', maxWidth: '800px' }}>
+        <div className="card" data-aos="fade-up" style={{ padding: '3rem', margin: '0 auto', maxWidth: '800px' }}>
           <h3 style={{ marginBottom: '1.5rem' }}>Our strengths include:</h3>
           <ul style={{ 
             display: 'grid', 

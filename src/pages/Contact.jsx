@@ -10,11 +10,11 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="container section contact-grid">
+      <section className="container section contact-grid" data-aos="fade-up">
         {/* OFFICE / HQ */}
         <div className="contact-locations">
           {details.map((location) => (
-            <div className="location-card" key={location.id}>
+            <div className="location-card" data-aos="fade-up" key={location.id}>
               <h3>{location.title}</h3>
               <dl>
                 <dt>Address</dt>
