@@ -1,58 +1,96 @@
-import { useState } from 'react'
-import distributors from '../data/products.js'
+import { useState, useMemo } from 'react'
+import distributorsData from '../data/products.js'
 
-function ProductItem({ item }) {
-  if (typeof item === 'string') return (
-    <li className="product-item">
-      <span className="product-item-string">{item}</span>
-    </li>
-  )
+// Flatten products helper for a distributor
+function getFlattenedProducts(distributor) {
+  const flattened = [];
+  if (!distributor || !distributor.products) return flattened;
   
-  return (
-    <li className="product-item">
-      <a href={item.url} target="_blank" rel="noreferrer" className="product-item-link">
-        <span className="product-item-text">{item.name}</span>
-        <span className="product-item-arrow" aria-hidden="true">&rarr;</span>
-      </a>
-    </li>
-  )
+  distributor.products.forEach(productCategory => {
+    if (productCategory.groups) {
+      productCategory.groups.forEach(group => {
+        if (group.items) {
+          group.items.forEach(item => {
+             const name = typeof item === 'string' ? item : item.name;
+             flattened.push({ name, category: productCategory.name, distributor: distributor.name });
+          });
+        }
+      });
+    } else {
+      // some might not have groups, just pushing category as product if needed
+      flattened.push({ name: productCategory.name, category: productCategory.name, distributor: distributor.name });
+    }
+  });
+  return flattened;
 }
 
 export default function Products() {
-  const [searchQuery, setSearchQuery] = useState('')
+  const [activeTab, setActiveTab] = useState('distributor-0'); 
 
-  // Filter distributors and their products based on search query
-  const filteredDistributors = distributors.map(distributor => {
-    if (!searchQuery) return distributor;
-    
-    const query = searchQuery.toLowerCase();
-    
-    // If the distributor name matches, return the whole distributor with all its products
-    if (distributor.name.toLowerCase().includes(query)) {
-      return distributor;
-    }
-    
-    // Otherwise, filter its products
-    const filteredProducts = distributor.products.filter(product => {
-      if (product.name.toLowerCase().includes(query)) return true;
-      
-      for (const group of product.groups) {
-        if (group.name && group.name.toLowerCase().includes(query)) return true;
-        for (const item of group.items) {
-          const itemName = typeof item === 'string' ? item : item.name;
-          if (itemName.toLowerCase().includes(query)) return true;
-        }
+  // Pre-calculate flattened products
+  const distributors = useMemo(() => {
+    return distributorsData.map((dist, index) => {
+      const flattened = getFlattenedProducts(dist);
+      return {
+        ...dist,
+        id: `DST-402${index + 1}`, // Mock ID
+        flattenedProducts: flattened,
+        productCount: flattened.length
       }
-      return false;
     });
+  }, []);
+
+  const allProducts = useMemo(() => {
+    return distributors.flatMap(d => d.flattenedProducts);
+  }, [distributors]);
+
+  const renderContent = () => {
+
+    // Distributor View
+    const distIndex = parseInt(activeTab.split('-')[1]);
+    const distributor = distributors[distIndex];
     
-    // Only return the distributor if it has matching products
-    if (filteredProducts.length > 0) {
-      return { ...distributor, products: filteredProducts };
-    }
-    
-    return null;
-  }).filter(Boolean);
+    if (!distributor) return null;
+
+    return (
+      <div className="content-view">
+        <p className="eyebrow-text">Distributor</p>
+        <h1 className="distributor-title">{distributor.name}</h1>
+        <p className="distributor-id">{distributor.id}</p>
+        
+        <p className="distributor-desc">
+          {distributor.about || 'Regional distributor for the northern territories. Stocks the full dry goods range and ships weekly.'}
+        </p>
+
+        <div className="products-grid-header">
+          <h3>Products</h3>
+          <span className="products-count">
+             {distributor.productCount > 0 ? `Showing all ${distributor.productCount} products` : 'No products listed'}
+          </span>
+        </div>
+        
+        {distributor.productCount > 0 ? (
+          <div className="products-grid">
+            {distributor.flattenedProducts.map((product, i) => (
+              <div className="product-card" key={i}>
+                <div className="product-image-placeholder">
+                  <div className="placeholder-stripes"></div>
+                  <span className="placeholder-text">PRODUCT SHOT</span>
+                </div>
+                <div className="product-info">
+                  <h4>{product.name}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="empty-state">
+            <p>Products coming soon.</p>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="page page-products">
@@ -62,101 +100,31 @@ export default function Products() {
           <h1>Power & Electronic Components</h1>
         </div>
       </section>
-
-      <section className="products-section" data-aos="fade-up">
-        <div className="section-intro" data-aos="fade-up">
-          <h2>Product Portfolio</h2>
-          <p>Explore our complete range of premium power supplies, converters, communication modules, drivers, sensors, and EMC solutions built for industrial reliability.</p>
-        </div>
-        
-        <div className="products-search-wrapper">
-          <input
-            type="text"
-            className="products-search-input"
-            placeholder="Search for a product, category, or series..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-        
-        {filteredDistributors.length === 0 ? (
-          <div className="products-no-results">
-            No products found matching "{searchQuery}"
+      <div className="products-layout section" style={{ paddingTop: '4rem' }}>
+        <aside className="products-sidebar">
+          <div className="sidebar-section">
+            <h4 className="sidebar-heading">DISTRIBUTORS</h4>
+            <ul className="sidebar-list">
+              {distributors.map((dist, index) => (
+                <li key={dist.name}>
+                  <button 
+                    className={`sidebar-item ${activeTab === `distributor-${index}` ? 'active' : ''}`}
+                    onClick={() => setActiveTab(`distributor-${index}`)}
+                  >
+                    <span className="item-title">{dist.name}</span>
+                    <span className="item-subtitle">{dist.id} - {dist.productCount} products</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
-        ) : (
-          <div className="distributors-list">
-            {filteredDistributors.map((distributor, distIndex) => (
-              <div className="distributor-section" key={distributor.name}>
-                <div className="distributor-header" data-aos="fade-up">
-                  <h2 className="distributor-name">{distributor.name}</h2>
-                  <p className="distributor-about">{distributor.about}</p>
-                  
-                  {distributor.stats && (
-                    <div className="distributor-stats">
-                      {distributor.stats.map(stat => (
-                        <div className="distributor-stat-item" key={stat.label}>
-                          <div className="distributor-stat-value">{stat.value}</div>
-                          <div className="distributor-stat-label">{stat.label}</div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+        </aside>
 
-                  {distributor.strengths && (
-                    <div className="distributor-strengths">
-                      {distributor.strengths.map(strength => (
-                        <div className="distributor-strength-card" key={strength.title}>
-                          <h4 className="distributor-strength-title">{strength.title}</h4>
-                          <p className="distributor-strength-desc">{strength.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {distributor.products.length > 0 ? (
-                  <div className="product-catalog">
-                    {distributor.products.map((product, index) => (
-                      <article className="product-card" data-aos="fade-up" key={product.name}>
-                        <div className="product-card-accent" data-aos="fade-up"></div>
-                        <div className="product-card-content" data-aos="fade-up">
-                          <div className="product-card-index" data-aos="fade-up">{String(index + 1).padStart(2, '0')}</div>
-                          
-                          <h3 className="product-card-title" data-aos="fade-up">{product.name}</h3>
-                          {product.range && <p className="product-card-range" data-aos="fade-up">{product.range}</p>}
-                          {!product.range && <div style={{ height: '2rem' }}></div>}
-                          
-                          <div className="product-groups">
-                            {product.groups.map((group, groupIndex) => (
-                              <div className="product-group" key={group.name || groupIndex}>
-                                {group.name && (
-                                  <h4 className="product-group-title">
-                                    {group.name} 
-                                    {group.range && <span>{group.range}</span>}
-                                  </h4>
-                                )}
-                                <ul className="product-item-list">
-                                  {group.items.map((item) => (
-                                    <ProductItem item={item} key={typeof item === 'string' ? item : item.name} />
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="distributor-products-empty">
-                    Products coming soon.
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
+        <main className="products-main">
+          {renderContent()}
+        </main>
+        
+      </div>
     </div>
   )
 }
