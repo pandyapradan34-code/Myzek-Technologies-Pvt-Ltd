@@ -3,6 +3,7 @@ import companyLogo from '../assets/myzek-logo-light.png'
 import distributors from '../data/products.js'
 
 
+
 export default function Home() {
   const logoRef = useRef(null)
 
@@ -163,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* 5. TRUST STRIP (Other Important Sections) */}
-      <section className="container section reveal delay-1" data-aos="fade-up">
+      {/* <section className="container section reveal delay-1" data-aos="fade-up">
         <div className="section-intro" data-aos="fade-up" style={{ textAlign: 'center', margin: '0 auto 3rem' }}>
           <p className="eyebrow">Trusted By</p>
           <h2>Certifications &amp; Partners</h2>
@@ -175,7 +176,198 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </section> */}
+
+    {/* 5. TRUST STRIP (Other Important Sections) */}
+{/* <section className="container section reveal delay-1" data-aos="fade-up">
+  <div className="section-intro" data-aos="fade-up" style={{ textAlign: 'center', margin: '0 auto 3rem' }}>
+    <p className="eyebrow">Trusted By</p>
+    <h2>  Partners</h2>
+  </div>
+  <div
+    className="logo-grid"
+    style={{
+      marginBottom: '3rem',
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      gap: '1.5rem',
+    }}
+  >
+    {["MORNSUN", "DONE", "CLAF"].map((name) => (
+      <div className="placeholder-media" key={name}>
+        <span>{name}</span>
+      </div>
+    ))}
+  </div>
+</section> */}
+      {/* 5. TRUST STRIP */}
+      {/* <section className="section reveal delay-1" data-aos="fade-up">
+        <style>{`
+          .partner-marquee { overflow: hidden; width: 100%; }
+          .partner-marquee__track {
+            display: flex;
+            width: max-content;
+            animation: partner-slide 22s linear infinite;
+          }
+          .partner-marquee:hover .partner-marquee__track {
+            animation-play-state: paused;
+          }
+          .partner-marquee__item {
+            padding: 0 3rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            color: var(--color-primary);
+            white-space: nowrap;
+          }
+          @keyframes partner-slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .partner-marquee__track { animation: none; width: 100%; justify-content: center; }
+          }
+        `}</style>
+
+        <div className="container">
+          <div className="section-intro" data-aos="fade-up" style={{ textAlign: 'center', margin: '0 auto 3rem' }}>
+            <p className="eyebrow">Trusted By</p>
+            <h2>Partners</h2>
+          </div>
+        </div>
+
+        <div className="partner-marquee" style={{ marginBottom: '3rem' }}>
+          <div className="partner-marquee__track">
+            {["MORNSUN", "DONE", "CLAF", "MORNSUN", "DONE", "CLAF",
+              "MORNSUN", "DONE", "CLAF", "MORNSUN", "DONE", "CLAF"].map((name, i) => (
+              <span className="partner-marquee__item" key={i}>{name}</span>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+
+
+
+            {/* 5. TRUST STRIP
+      <section className="container section reveal delay-1" data-aos="fade-up">
+        <style>{`
+          .partner-split {
+            display: grid;
+            grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+          }
+          .partner-tiles {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+          }
+          .partner-tile {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e3e6e9;
+            border-radius: 10px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--color-primary);
+            transition: border-color 0.25s ease, transform 0.25s ease;
+          }
+          .partner-tile:hover {
+            border-color: var(--color-accent, #E07B24);
+            transform: translateY(-3px);
+          }
+          @media (max-width: 900px) {
+            .partner-split { grid-template-columns: 1fr; gap: 2rem; }
+          }
+          @media (max-width: 520px) {
+            .partner-tiles { grid-template-columns: 1fr; }
+            .partner-tile { height: 90px; }
+          }
+        `}</style>
+
+        <div className="partner-split">
+          <div data-aos="fade-up">
+            <p className="eyebrow">Trusted By</p>
+            <h2>Partners &amp; Certifications</h2>
+            <p style={{ margin: 0, maxWidth: '42ch' }}>
+              We work with established manufacturers and certification bodies to keep quality consistent across every module we supply.
+            </p>
+          </div>
+
+          <div className="partner-tiles" data-aos="fade-up">
+            {["MORNSUN", "DONE", "CLAF"].map((name) => (
+              <div className="partner-tile" key={name}>
+                {name}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section> */}
+           {/* 5. TRUST STRIP */}
+      <section className="container section reveal delay-1" data-aos="fade-up">
+        <style>{`
+          .partner-split {
+            display: grid;
+            grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+          }
+          .partner-tiles {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+          }
+          .partner-tile {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-primary);
+            border-radius: 10px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #ffffff;
+            transition: background 0.25s ease, transform 0.25s ease;
+          }
+          .partner-tile:hover {
+            background: #1D4C74;
+            transform: translateY(-3px);
+          }
+          @media (max-width: 900px) {
+            .partner-split { grid-template-columns: 1fr; gap: 2rem; }
+          }
+          @media (max-width: 520px) {
+            .partner-tiles { grid-template-columns: 1fr; }
+            .partner-tile { height: 90px; }
+          }
+        `}</style>
+
+        <div className="partner-split">
+          <div>
+            <p className="eyebrow">Trusted By</p>
+            <h2>Partners &amp; Certifications</h2>
+            <p style={{ margin: 0, maxWidth: '42ch' }}>
+              We work with established manufacturers and certification bodies to keep quality consistent across every module we supply.
+            </p>
+          </div>
+
+          <div className="partner-tiles">
+            {["MORNSUN", "DONE", "CLAF"].map((name) => (
+              <div className="partner-tile" key={name}>{name}</div>
+            ))}
+          </div>
+        </div>
       </section>
+
+
 
       {/* 6. CONTACT / CTA SECTION */}
       <section className="section reveal delay-1" data-aos="fade-up" style={{ backgroundColor: 'var(--color-primary)', color: 'white', textAlign: 'center', padding: '6rem 2rem' }}>
