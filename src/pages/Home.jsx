@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import companyLogo from '../assets/myzek-logo-light.png'
 import distributors from '../data/products.js'
+import { Car, Zap, Cog, RadioTower, HeartPulse, TrainFront } from 'lucide-react'
 
 
 
@@ -146,19 +147,26 @@ export default function Home() {
           <p style={{ maxWidth: '68ch' }}>
             Our components power critical infrastructure across a wide variety of sectors, ensuring flawless operation where it matters most.
           </p>
+          
+                <div className="industry-grid">
+          {[
+            { name: 'Automotive', Icon: Car },
+            { name: 'Energy & Power', Icon: Zap },
+            { name: 'Industrial Automation', Icon: Cog },
+            { name: 'Telecommunications', Icon: RadioTower },
+            { name: 'Medical Devices', Icon: HeartPulse },
+            { name: 'Railways', Icon: TrainFront },
+          ].map(({ name, Icon }) => (
+            <div className="industry-tile" key={name}>
+              <Icon size={26} strokeWidth={1.75} />
+              <p>{name}</p>
+            </div>
+          ))}
         </div>
-        <div className="badge-row" style={{ marginBottom: '3rem' }}>
-          {['Automotive', 'Energy & Power', 'Industrial Automation', 'Telecommunications', 'Medical Devices', 'Railways'].map(
-            (name) => (
-              <span className="badge" key={name}>
-                {name}
-              </span>
-            ),
-          )}
         </div>
-        <div style={{ textAlign: 'center' }}>
-          <a className="btn btn-ghost" href="/applications" style={{ color: 'var(--color-primary)', borderColor: 'var(--color-primary)' }}>
-            Explore Applications &rarr;
+                <div style={{ textAlign: 'center' }}>
+          <a className="btn btn-accent" href="/applications">
+            Explore More Applications &rarr;
           </a>
         </div>
       </section>
