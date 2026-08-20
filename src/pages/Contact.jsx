@@ -1,6 +1,48 @@
+import React, { useState } from 'react';
 import details from '../data/contect_us.js';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', company: '', email: '', phone: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="page page-contact">
       <section className="page-header">
@@ -55,36 +97,43 @@ export default function Contact() {
         </div>
 
         {/* CONTACT FORM */}
-        <form className="form" onSubmit={(e) => e.preventDefault()}>
+        <form className="form" onSubmit={handleSubmit}>
+          {submitStatus === 'success' && (
+            <div className="alert alert-success" style={{ padding: '1rem', backgroundColor: '#e6fffa', color: '#2c7a7b', marginBottom: '1rem', borderRadius: '4px' }}>
+              Thank you for contacting us. Your message has been sent successfully!
+            </div>
+          )}
+          {submitStatus === 'error' && (
+            <div className="alert alert-error" style={{ padding: '1rem', backgroundColor: '#fff5f5', color: '#c53030', marginBottom: '1rem', borderRadius: '4px' }}>
+              Oops! Something went wrong. Please try again later.
+            </div>
+          )}
           <div className="form-row">
             <div className="form-field">
-              <label htmlFor="name">Full name</label>
-              <input id="name" type="text" placeholder="Your name" />
+              <label htmlFor="name">Full name *</label>
+              <input id="name" type="text" placeholder="Your name" value={formData.name} onChange={handleChange} required />
             </div>
             <div className="form-field">
               <label htmlFor="company">Company</label>
-              <input id="company" type="text" placeholder="Company name" />
+              <input id="company" type="text" placeholder="Company name" value={formData.company} onChange={handleChange} />
             </div>
           </div>
           <div className="form-row">
             <div className="form-field">
-              <label htmlFor="email">Email</label>
-              <input id="email" type="email" placeholder="you@company.com" />
+              <label htmlFor="email">Email *</label>
+              <input id="email" type="email" placeholder="you@company.com" value={formData.email} onChange={handleChange} required />
             </div>
             <div className="form-field">
               <label htmlFor="phone">Phone</label>
-              <input id="phone" type="tel" placeholder="+91 00000 00000" />
+              <input id="phone" type="tel" placeholder="+91 00000 00000" value={formData.phone} onChange={handleChange} />
             </div>
           </div>
           <div className="form-field">
             <label htmlFor="message">Message</label>
-            <textarea id="message" placeholder="Share your component requirement" />
+            <textarea id="message" placeholder="Share your component requirement" value={formData.message} onChange={handleChange} />
           </div>
-          <p className="form-note">
-            This form is UI only for now — connect it to email or a form service when ready.
-          </p>
-          <button type="submit" className="btn btn-accent" style={{ justifySelf: 'start' }}>
-            Send Message
+          <button type="submit" className="btn btn-accent" style={{ justifySelf: 'start' }} disabled={isSubmitting}>
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </section>
