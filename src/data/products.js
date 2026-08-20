@@ -1,3 +1,4 @@
+import { DONE_PRODUCTS } from './done.js'
 const distributors = [
   {
     name: 'MORNSUN',
@@ -18,7 +19,7 @@ const distributors = [
       { title: 'Quality Control', description: 'Product quality is the foundation of a manufacturing company\'s livelihood and the cornerstone of its long-term development. Done has always strictly implemented the ISO9001 quality management system and has very strict requirements for the incoming inspection of raw materials, the inspection of the production process and the inspection of finished products. We carry out a 100% ageing test on every finished product to ensure that the quality can satisfy customers and the market.' },
       { title: 'Manufacturing Capacity', description: 'Done has 10 high-power LED driver production lines, each line produces 5,000 LED drivers daily, and the production workshop is equipped with advanced wave soldering, AOI optical tester, ATE full-function tester, high-power aging cabinet and automatic glue filling production lines. In order to improve production automation and production efficiency, the company is building a fully-automated high-power LED power supply production line, which is expected to be put into operation before 2022 and can increase production capacity by 40% after it is put into operation.' }
     ],
-    products: []
+    products: DONE_PRODUCTS
   },
   {
     name: 'CLAF',

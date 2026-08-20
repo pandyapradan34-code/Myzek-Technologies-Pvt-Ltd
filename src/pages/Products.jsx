@@ -5,25 +5,34 @@ import distributorsData from '../data/products.js'
 function getFlattenedProducts(distributor) {
   const flattened = [];
   if (!distributor || !distributor.products) return flattened;
-  
+
   distributor.products.forEach(productCategory => {
     if (productCategory.groups) {
       productCategory.groups.forEach(group => {
         if (group.items) {
           group.items.forEach(item => {
-             const name = typeof item === 'string' ? item : item.name;
-             flattened.push({ name, category: productCategory.name, distributor: distributor.name });
+            const name = typeof item === 'string' ? item : item.name;
+            const url = typeof item === 'string' ? null : item.url;
+            flattened.push({
+              name,
+              url,
+              category: productCategory.name,
+              distributor: distributor.name,
+            });
           });
         }
       });
     } else {
-      // some might not have groups, just pushing category as product if needed
-      flattened.push({ name: productCategory.name, category: productCategory.name, distributor: distributor.name });
+      // flat product entries (e.g. DONE) — keep image, range and series
+      flattened.push({
+        ...productCategory,
+        category: productCategory.series || productCategory.name,
+        distributor: distributor.name,
+      });
     }
   });
   return flattened;
 }
-
 export default function Products() {
   const [activeTab, setActiveTab] = useState('distributor-0'); 
 
@@ -72,13 +81,20 @@ export default function Products() {
         {distributor.productCount > 0 ? (
           <div className="products-grid">
             {distributor.flattenedProducts.map((product, i) => (
-              <div className="product-card" key={i}>
-                <div className="product-image-placeholder">
-                  <div className="placeholder-stripes"></div>
-                  <span className="placeholder-text">PRODUCT SHOT</span>
-                </div>
+              <div className="product-card" key={product.slug || i}>
+                {product.image ? (
+                  <div className="product-image">
+                    <img src={product.image} alt={product.name} loading="lazy" />
+                  </div>
+                ) : (
+                  <div className="product-image-placeholder">
+                    <div className="placeholder-stripes"></div>
+                    <span className="placeholder-text">PRODUCT SHOT</span>
+                  </div>
+                )}
                 <div className="product-info">
                   <h4>{product.name}</h4>
+                  {product.range && <p className="product-range">{product.range}</p>}
                 </div>
               </div>
             ))}
@@ -91,7 +107,6 @@ export default function Products() {
       </div>
     );
   };
-
   return (
     <div className="page page-products">
       <section className="page-header">

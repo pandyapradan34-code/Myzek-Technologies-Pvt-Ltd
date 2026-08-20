@@ -162,6 +162,7 @@ export default function Home() {
               <p>{name}</p>
             </div>
           ))}
+
         </div>
         </div>
                 <div style={{ textAlign: 'center' }}>
@@ -317,6 +318,7 @@ export default function Home() {
           </div>
         </div>
       </section> */}
+      
            {/* 5. TRUST STRIP */}
       <section className="container section reveal delay-1" data-aos="fade-up">
         <style>{`
@@ -398,3 +400,4 @@ export default function Home() {
     </div>
   )
 }
+
