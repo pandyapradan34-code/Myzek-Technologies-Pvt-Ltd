@@ -300,3 +300,189 @@
   margin: 0.25rem 0 0;
   letter-spacing: 0.03em;
 }
+
+
+
+
+
+
+
+
+/* ================================================================
+   PRODUCT CATALOGUE — compact grid
+   Paste at the BOTTOM of src/products.css
+   Delete any older .product-image / .product-gallery /
+   .product-range / .product-watts / .series-* rules first.
+   ================================================================ */
+
+/* ---------- series header ---------- */
+
+.series-block {
+  margin-bottom: 2.75rem;
+}
+
+.series-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #dfe4e9;
+}
+
+.series-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+}
+
+.series-count {
+  font-size: 0.75rem;
+  color: #98a2ad;
+  letter-spacing: 0.03em;
+}
+
+.series-range {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent, #E07B24);
+  letter-spacing: 0.05em;
+}
+
+/* ---------- grid ---------- */
+
+.pcard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.9rem;
+}
+
+/* ---------- card ---------- */
+
+.pcard {
+  border: 1px solid #e4e8ec;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pcard:hover {
+  border-color: #c3ccd5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(21, 58, 91, 0.08);
+}
+
+/* ---------- media ---------- */
+
+.pcard-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: #f4f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.pcard-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+}
+
+/* second view fades in on hover */
+.pcard-img-alt {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  margin: auto;
+  opacity: 0;
+}
+
+.pcard:hover .pcard-img-alt {
+  opacity: 1;
+}
+
+.pcard:hover .pcard-img:not(.pcard-img-alt) {
+  opacity: 0;
+}
+
+.pcard-noimg {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #b3bcc5;
+  text-transform: uppercase;
+}
+
+/* ---------- badge ---------- */
+
+.pcard-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* ---------- body ---------- */
+
+.pcard-body {
+  padding: 0.7rem 0.8rem 0.85rem;
+  border-top: 1px solid #eef1f4;
+}
+
+.pcard-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-primary);
+  margin: 0 0 0.2rem;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.pcard-spec {
+  font-size: 0.7rem;
+  color: #98a2ad;
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  .pcard-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.7rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .pcard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+  .pcard-media {
+    padding: 0.7rem;
+  }
+  .series-block {
+    margin-bottom: 2rem;
+  }
+}
