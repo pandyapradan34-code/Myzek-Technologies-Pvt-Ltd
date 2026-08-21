@@ -212,7 +212,7 @@ function ProductCard({ product }) {
   const secondary = gallery[1]
 
   return (
-    <article className="pcard">
+    <article className={`pcard ${secondary ? 'has-secondary' : ''}`}>
       <div className="pcard-media">
         {primary ? (
           <>
