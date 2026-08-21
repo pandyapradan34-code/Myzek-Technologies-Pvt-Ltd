@@ -52,7 +52,7 @@ export default function Footer() {
 
         <div className="new-footer-col">
           <h4>Company</h4>
-          <Link to="/about" className="new-footer-link">About Us</Link>
+          <Link to="/about" className="new-footer-link">About Us</Link> <br/>
           <Link to="/contact" className="new-footer-link">Contact Us</Link>
         </div>
 
