@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import companyLogo from '../assets/myzek-logo-light.png'
+import clafLogo from '../assets/claf.png'
 import distributors from '../data/products.js'
 import { Car, Zap, Cog, RadioTower, HeartPulse, TrainFront } from 'lucide-react'
 
@@ -370,8 +371,14 @@ export default function Home() {
           </div>
 
           <div className="partner-tiles">
-            {["MORNSUN", "DONE", "CLAF"].map((name) => (
-              <div className="partner-tile" key={name}>{name}</div>
+            {["DONE", "CLAF","MORNSUN"].map((name) => (
+              <div 
+                className="partner-tile" 
+                key={name}
+                style={name === 'CLAF' ? { background: 'transparent', border: 'none' } : {}}
+              >
+                {name === 'CLAF' ? <img src={clafLogo} alt="CLAF Logo" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} /> : name}
+              </div>
             ))}
           </div>
         </div>

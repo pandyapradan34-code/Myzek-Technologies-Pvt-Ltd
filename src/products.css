@@ -20,9 +20,8 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  background-color: var(--color-primary);
+  background-color: transparent;
   padding: 2rem 2rem 2rem var(--space-4);
-  border-radius: 0 var(--radius) var(--radius) 0;
   border: none;
 }
 
@@ -32,7 +31,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-on-dark-muted);
+  color: var(--color-text-muted);
   margin-bottom: 1rem;
 }
 
@@ -54,35 +53,35 @@
   flex-direction: column;
   gap: 0.25rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   border-radius: 4px;
 }
 
 .sidebar-item:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #f3f4f6;
 }
 
 .sidebar-item.active {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #e5e7eb;
 }
 
 .item-title {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.1rem;
-  color: var(--color-text-on-dark);
+  color: var(--color-ink);
 }
 
 .item-subtitle {
   font-size: 0.75rem;
-  color: var(--color-text-on-dark-muted);
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .sidebar-item.active .item-title,
 .sidebar-item.active .item-subtitle {
-  color: #fff;
+  color: var(--color-primary);
 }
 
 /* Main Content Styles */
@@ -396,7 +395,11 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pcard:hover .pcard-img {
+  transform: scale(1.08);
 }
 
 /* second view fades in on hover */
@@ -414,7 +417,7 @@
   opacity: 1;
 }
 
-.pcard:hover .pcard-img:not(.pcard-img-alt) {
+.pcard:has(.pcard-img-alt):hover .pcard-img:not(.pcard-img-alt) {
   opacity: 0;
 }
 
