@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+// import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -17,6 +18,14 @@ import 'aos/dist/aos.css'
 // Every page URL for the site lives here. Add a new <Route> + page file
 // under src/pages/ any time a new page is needed.
 export default function App() {
+  const location = useLocation()
+
+useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+  }, [location.pathname])
   useEffect(() => {
     AOS.init({
       duration: 800,

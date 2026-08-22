@@ -417,9 +417,14 @@
   opacity: 1;
 }
 
+<<<<<<< HEAD
 .pcard:has(.pcard-img-alt):hover .pcard-img:not(.pcard-img-alt) {
+=======
+.pcard.has-secondary:hover .pcard-img:not(.pcard-img-alt) {
+>>>>>>> 6c00bf27886d2e0497f1929c8d85e5a11db69561
   opacity: 0;
 }
+
 
 .pcard-noimg {
   font-size: 0.7rem;
