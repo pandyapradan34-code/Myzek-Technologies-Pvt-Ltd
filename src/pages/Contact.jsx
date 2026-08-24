@@ -21,15 +21,26 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus(null);
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/lead', {
+      const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+      if (!scriptUrl) {
+        console.error("VITE_GOOGLE_SCRIPT_URL is missing!");
+        setSubmitStatus('error');
+        return;
+      }
+      
+      const response = await fetch(scriptUrl, {
         method: 'POST',
+        // Important: Google Apps Script CORS typically works best with text/plain or no cors mode,
+        // but 'no-cors' prevents reading the response. We will use text/plain to avoid preflight issues.
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'text/plain;charset=utf-8', 
         },
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.success) {
         setSubmitStatus('success');
         setFormData({ name: '', company: '', email: '', phone: '', message: '' });
       } else {
@@ -100,12 +111,12 @@ export default function Contact() {
         <form className="form" onSubmit={handleSubmit}>
           {submitStatus === 'success' && (
             <div className="alert alert-success" style={{ padding: '1rem', backgroundColor: '#e6fffa', color: '#2c7a7b', marginBottom: '1rem', borderRadius: '4px' }}>
-              Thank you for contacting us. Your message has been sent successfully!
+              Thank you! Your enquiry has been submitted successfully.
             </div>
           )}
           {submitStatus === 'error' && (
             <div className="alert alert-error" style={{ padding: '1rem', backgroundColor: '#fff5f5', color: '#c53030', marginBottom: '1rem', borderRadius: '4px' }}>
-              Oops! Something went wrong. Please try again later.
+              Something went wrong. Please try again.
             </div>
           )}
           <div className="form-row">
@@ -133,7 +144,7 @@ export default function Contact() {
             <textarea id="message" placeholder="Share your component requirement" value={formData.message} onChange={handleChange} />
           </div>
           <button type="submit" className="btn btn-accent" style={{ justifySelf: 'start' }} disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Send Message'}
+            {isSubmitting ? 'Submitting...' : 'Send Message'}
           </button>
         </form>
       </section>

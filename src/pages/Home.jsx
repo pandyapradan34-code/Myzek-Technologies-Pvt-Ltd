@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import companyLogo from '../assets/myzek-logo-light.png'
 import clafLogo from '../assets/claf.png'
+import doneLogo from '../assets/done-logo.bmp'
 import distributors from '../data/products.js'
 import { Car, Zap, Cog, RadioTower, HeartPulse, TrainFront } from 'lucide-react'
 
@@ -371,15 +372,20 @@ export default function Home() {
           </div>
 
           <div className="partner-tiles">
-            {["DONE", "CLAF","MORNSUN"].map((name) => (
-              <div 
-                className="partner-tile" 
-                key={name}
-                style={name === 'CLAF' ? { background: 'transparent', border: 'none' } : {}}
-              >
-                {name === 'CLAF' ? <img src={clafLogo} alt="CLAF Logo" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} /> : name}
-              </div>
-            ))}
+            {["DONE", "CLAF","MORNSUN"].map((name) => {
+              const isImage = name === 'CLAF' || name === 'DONE';
+              return (
+                <div 
+                  className="partner-tile" 
+                  key={name}
+                  style={isImage ? { background: 'transparent', border: 'none' } : {}}
+                >
+                  {name === 'CLAF' ? <img src={clafLogo} alt="CLAF Logo" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} /> : 
+                   name === 'DONE' ? <img src={doneLogo} alt="DONE Logo" style={{ maxWidth: '100%', maxHeight: '130%', objectFit: 'contain', clipPath: 'inset(35% 0 0 0)', transform: 'translateY(-15%)' }} /> : 
+                   name}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
