@@ -68,28 +68,106 @@ function ProductCard({ product }) {
   const gallery = product.images || (product.image ? [product.image] : [])
   const primary = gallery[0]
   const secondary = gallery[1]
+  const hasImage = !!primary
+
+  if (!hasImage) {
+    return (
+      <article className="pcard pcard-text-only" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div className="pcard-body" style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '1rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '0.5rem' }}>
+            <h4 className="pcard-name" style={{ margin: 0, fontSize: '0.85rem' }}>{product.name}</h4>
+            {product.watts && (
+              <span 
+                style={{ 
+                  background: 'var(--color-primary)', 
+                  color: '#fff', 
+                  fontSize: '0.65rem', 
+                  fontWeight: 700, 
+                  padding: '0.2rem 0.4rem', 
+                  borderRadius: '4px',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {product.watts}W
+              </span>
+            )}
+          </div>
+          
+          {product.volts && <p className="pcard-spec" style={{ margin: '0 0 0.5rem 0' }}>{product.volts}V DC</p>}
+          {!product.volts && product.range && <p className="pcard-spec" style={{ margin: '0 0 0.5rem 0' }}>{product.range}</p>}
+          
+          {product.stock !== undefined && (
+            <div 
+              style={{ 
+                marginTop: 'auto', 
+                paddingTop: '0.6rem', 
+                borderTop: '1px solid #f3f4f6', 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                fontSize: '0.72rem',
+                alignItems: 'center'
+              }}
+            >
+              <span style={{ color: '#6b7280' }}>Stock:</span>
+              <span 
+                style={{ 
+                  fontWeight: 700, 
+                  color: product.stock > 0 ? '#10b981' : '#ef4444',
+                  background: product.stock > 0 ? '#e6fdf4' : '#fdf2f2',
+                  padding: '0.15rem 0.4rem',
+                  borderRadius: '4px'
+                }}
+              >
+                {product.stock > 0 ? `${product.stock.toLocaleString()} pcs` : 'Out of stock'}
+              </span>
+            </div>
+          )}
+        </div>
+      </article>
+    )
+  }
 
   return (
-    <article className={`pcard ${secondary ? 'has-secondary' : ''}`}>
+    <article className={`pcard ${secondary ? 'has-secondary' : ''}`} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <div className="pcard-media">
-        {primary ? (
-          <>
-            <img className="pcard-img" src={primary} alt={product.name} loading="lazy" />
-            {secondary && (
-              <img className="pcard-img pcard-img-alt" src={secondary} alt="" aria-hidden="true" loading="lazy" />
-            )}
-          </>
-        ) : (
-          <span className="pcard-noimg">No image</span>
+        <img className="pcard-img" src={primary} alt={product.name} loading="lazy" />
+        {secondary && (
+          <img className="pcard-img pcard-img-alt" src={secondary} alt="" aria-hidden="true" loading="lazy" />
         )}
-
         {product.watts && <span className="pcard-badge">{product.watts}W</span>}
       </div>
 
-      <div className="pcard-body">
+      <div className="pcard-body" style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
         <h4 className="pcard-name">{product.name}</h4>
         {product.volts && <p className="pcard-spec">{product.volts}V DC</p>}
         {!product.volts && product.range && <p className="pcard-spec">{product.range}</p>}
+        
+        {product.stock !== undefined && (
+          <div 
+            style={{ 
+              marginTop: 'auto', 
+              paddingTop: '0.6rem', 
+              borderTop: '1px solid #f3f4f6', 
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              fontSize: '0.72rem',
+              alignItems: 'center'
+            }}
+          >
+            <span style={{ color: '#6b7280' }}>Stock:</span>
+            <span 
+              style={{ 
+                fontWeight: 700, 
+                color: product.stock > 0 ? '#10b981' : '#ef4444',
+                background: product.stock > 0 ? '#e6fdf4' : '#fdf2f2',
+                padding: '0.15rem 0.4rem',
+                borderRadius: '4px'
+              }}
+            >
+              {product.stock > 0 ? `${product.stock.toLocaleString()} pcs` : 'Out of stock'}
+            </span>
+          </div>
+        )}
       </div>
     </article>
   )

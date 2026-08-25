@@ -1,5 +1,6 @@
 import { DONE_PRODUCTS } from './done.js'
 import { CLAF_PRODUCTS } from './claf.js'
+import { MORNSUN_PRODUCTS } from './mornsun.js'
 
 const distributors = [
   {
@@ -25,8 +26,8 @@ const distributors = [
   },
   {
     name: 'MORNSUN',
-    about: 'Information about MORNSUN will go here. Awaiting details from the user.',
-    products: []
+    about: 'Mornsun is a leading national high-tech enterprise headquartered in China. It has grown into one of the largest vertical industrial power supply manufacturers with a comprehensive product portfolio including AC/DC converters, DC/DC converters, DIN Rail power supplies, enclosed switching power supplies, transceivers, IGBT drivers, and EMC auxiliary devices. Mornsun provides reliable, high-performance power solutions for various industries such as industrial automation, smart grid, medical, clean energy, and transportation.',
+    products: MORNSUN_PRODUCTS
   }
 ]
 
