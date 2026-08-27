@@ -321,8 +321,7 @@ export default function Home() {
           </div>
         </div>
       </section> */}
-      
-           {/* 5. TRUST STRIP */}
+        {/* 5. TRUST STRIP */}
       <section className="container section reveal delay-1" data-aos="fade-up">
         <style>{`
           .partner-split {
@@ -332,34 +331,44 @@ export default function Home() {
             align-items: center;
             margin-bottom: 3rem;
           }
-          .partner-tiles {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
+          .partner-marquee-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
           }
-          .partner-tile {
-            height: 120px;
+          .partner-marquee-track {
+            display: flex;
+            gap: 4rem;
+            width: max-content;
+            animation: partner-scroll 16s linear infinite;
+          }
+          .partner-marquee-container:hover .partner-marquee-track {
+            animation-play-state: paused;
+          }
+          .partner-marquee-item {
+            width: 150px;
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--color-primary);
-            border-radius: 10px;
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            color: #ffffff;
-            transition: background 0.25s ease, transform 0.25s ease;
+            flex-shrink: 0;
           }
-          .partner-tile:hover {
-            background: #1D4C74;
-            transform: translateY(-3px);
+          .partner-marquee-item img {
+            max-width: 100%;
+            object-fit: contain;
+          }
+          @keyframes partner-scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
           }
           @media (max-width: 900px) {
             .partner-split { grid-template-columns: 1fr; gap: 2rem; }
-          }
-          @media (max-width: 520px) {
-            .partner-tiles { grid-template-columns: 1fr; }
-            .partner-tile { height: 90px; }
           }
         `}</style>
 
@@ -372,22 +381,18 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="partner-tiles">
-            {["DONE", "CLAF", "MORNSUN"].map((name) => {
-              const isImage = name === 'CLAF' || name === 'DONE' || name === 'MORNSUN';
-              return (
-                <div 
-                  className="partner-tile" 
-                  key={name}
-                  style={isImage ? { background: 'transparent', border: 'none' } : {}}
-                >
-                  {name === 'CLAF' ? <img src={clafLogo} alt="CLAF Logo" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} /> : 
-                   name === 'DONE' ? <img src={doneLogo} alt="DONE Logo" style={{ maxWidth: '100%', maxHeight: '130%', objectFit: 'contain', clipPath: 'inset(35% 0 0 0)', transform: 'translateY(-15%)' }} /> : 
-                   name === 'MORNSUN' ? <img src={mornsunLogo} alt="MORNSUN Logo" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} /> : 
-                   name}
+          <div className="partner-marquee-container">
+            <div className="partner-marquee-track">
+              {[...Array(4)].flatMap((_, idx) => [
+                { name: 'DONE', logo: doneLogo, style: { maxHeight: '130%', clipPath: 'inset(35% 0 0 0)', transform: 'translateY(-15%)' } },
+                { name: 'CLAF', logo: clafLogo, style: { maxHeight: '100%' } },
+                { name: 'MORNSUN', logo: mornsunLogo, style: { maxHeight: '100%' } }
+              ]).map((partner, i) => (
+                <div className="partner-marquee-item" key={i}>
+                  <img src={partner.logo} alt={`${partner.name} Logo`} style={partner.style} />
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </section>
