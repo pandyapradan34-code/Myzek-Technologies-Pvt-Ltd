@@ -89,7 +89,7 @@ export default function Home() {
 
       {/* 2. ABOUT US SECTION */}
       <section className="section reveal delay-1" data-aos="fade-up">
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+        <div className="container home-about-grid">
           <div>
             <p className="eyebrow">About Myzek</p>
             <h2>Built for Industry. Delivered at Scale.</h2>
