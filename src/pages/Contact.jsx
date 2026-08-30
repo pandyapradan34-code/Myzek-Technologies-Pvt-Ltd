@@ -56,7 +56,7 @@ export default function Contact() {
 
   return (
     <div className="page page-contact">
-      <section className="page-header">
+      <section className="page-header" data-aos="fade-up">
         <div className="container">
           <p className="eyebrow">Contact Us</p>
           <h1>Get in touch</h1>

@@ -6,7 +6,22 @@ import mornsunLogo from '../assets/Mornsun.png'
 import distributors from '../data/products.js'
 import { Car, Zap, Cog, RadioTower, HeartPulse, TrainFront } from 'lucide-react'
 
+// Import Hero Images for rotating showcase marquee
+import heroImg1 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.37 PM (1).jpeg'
+import heroImg2 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.37 PM (2).jpeg'
+import heroImg3 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.37 PM.jpeg'
+import heroImg4 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.38 PM (1).jpeg'
+import heroImg5 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.38 PM (2).jpeg'
+import heroImg6 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.38 PM.jpeg'
 
+const PRODUCT_OFFERINGS = [
+  { name: 'Industrial Power Module', image: heroImg1 },
+  { name: 'Precision Converter', image: heroImg2 },
+  { name: 'AC/DC Power Supply', image: heroImg3 },
+  { name: 'DC/DC Rail Module', image: heroImg4 },
+  { name: 'Custom Electronics Unit', image: heroImg5 },
+  { name: 'High-Density Controller', image: heroImg6 },
+]
 
 export default function Home() {
   const logoRef = useRef(null)
@@ -87,8 +102,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. ABOUT US SECTION */}
+      {/* 2. PRODUCT / APPLICATION SECTION (Core Offerings Marquee) */}
       <section className="section reveal delay-1" data-aos="fade-up">
+
+        <div className="container">
+          <div className="section-intro reveal delay-1" data-aos="fade-up" style={{ textAlign: 'center', margin: '0 auto 3rem', maxWidth: '800px' }}>
+            <p className="eyebrow">Products</p>
+            <h2>Our Core Offerings</h2>
+            <p style={{ maxWidth: '68ch', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.6' }}>
+              Explore our premium range of power solutions and custom electronic modules, designed for maximum efficiency and industrial reliability.
+            </p>
+          </div>
+        </div>
+
+        <div className="products-marquee-container">
+          <div className="products-marquee-track">
+            {[...Array(2)].flatMap((_, repIdx) => 
+              PRODUCT_OFFERINGS.map((prod, idx) => (
+                <div 
+                  className="product-marquee-item" 
+                  key={`${repIdx}-${idx}`}
+                  style={{ animationDelay: `${idx * 0.6}s` }}
+                >
+                  <img src={prod.image} alt={prod.name} loading="lazy" />
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+
+        <div className="container">
+          <div className="reveal delay-1" style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <a className="btn btn-accent" href="/products">
+              Explore All Products &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. ABOUT US SECTION */}
+      <section className="section section-alt reveal delay-1" data-aos="fade-up">
         <div className="container home-about-grid">
           <div>
             <p className="eyebrow">About Myzek</p>
@@ -106,38 +159,6 @@ export default function Home() {
           <div className="placeholder-media" style={{ height: '100%', minHeight: '300px' }}>
             <span className="placeholder-media-icon">🏭</span>
             <span>Facility Photo</span>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. PRODUCT / APPLICATION SECTION */}
-      <section className="section section-alt" data-aos="fade-up">
-        <div className="container">
-          <div className="section-intro reveal delay-1" data-aos="fade-up">
-            <p className="eyebrow">Products</p>
-            <h2>Our Core Offerings</h2>
-            <p style={{ maxWidth: '68ch' }}>
-              Explore our premium range of power solutions, designed for high efficiency and industrial reliability.
-            </p>
-          </div>
-          <div className="card-grid" data-aos="fade-up">
-            {distributors.flatMap(d => d.products).slice(0, 3).map(
-              (product, idx) => (
-                <div className={`card reveal delay-${(idx % 3) + 1}`} key={product.name}>
-                  <div className="placeholder-media">
-                    <span className="placeholder-media-icon">📦</span>
-                    <span>Category photo</span>
-                  </div>
-                  <h3>{product.name}</h3>
-                  <p>{product.range ? `Power Range: ${product.range}` : `Explore our full range of ${product.name.toLowerCase()}.`}</p>
-                </div>
-              ),
-            )}
-          </div>
-          <div className="reveal delay-1" style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a className="btn btn-accent" href="/products">
-              Explore All Products &rarr;
-            </a>
           </div>
         </div>
       </section>

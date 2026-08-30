@@ -20,12 +20,20 @@ import 'aos/dist/aos.css'
 export default function App() {
   const location = useLocation()
 
-useEffect(() => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  })
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+    
+    // Refresh AOS animations after route changes to bind scroll listeners to new DOM elements
+    const timer = setTimeout(() => {
+      AOS.refresh()
+    }, 200)
+    
+    return () => clearTimeout(timer)
   }, [location.pathname])
+
   useEffect(() => {
     AOS.init({
       duration: 800,

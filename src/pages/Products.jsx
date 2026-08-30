@@ -201,7 +201,7 @@ export default function Products() {
     const grouped = groupBySeries(filteredProducts)
 
     return (
-      <div className="content-view">
+      <div className="content-view" data-aos="fade-up">
         <p className="eyebrow-text">Distributor</p>
         <h1 className="distributor-title">{distributor.name}</h1>
         <p className="distributor-id">{distributor.id}</p>
@@ -232,7 +232,7 @@ export default function Products() {
           grouped.map(group => {
             const range = powerRange(group.items)
             return (
-              <section className="series-block" key={group.key}>
+              <section className="series-block" key={group.key} data-aos="fade-up">
                 <div className="series-header">
                   <span className="series-name">{group.key}</span>
                   <span className="series-count">{group.items.length} models</span>
@@ -258,14 +258,14 @@ export default function Products() {
 
   return (
     <div className="page page-products">
-      <section className="page-header">
+      <section className="page-header" data-aos="fade-up">
         <div className="container">
           <p className="eyebrow">Products</p>
           <h1>Power &amp; Electronic Components</h1>
         </div>
       </section>
 
-      <div className="products-layout section" style={{ paddingTop: '4rem' }}>
+      <div className="products-layout section" style={{ paddingTop: '4rem' }} data-aos="fade-up">
         <aside className="products-sidebar">
           <div className="sidebar-section">
             <h4 className="sidebar-heading">DISTRIBUTORS</h4>
