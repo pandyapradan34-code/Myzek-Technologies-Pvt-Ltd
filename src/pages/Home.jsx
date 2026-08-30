@@ -7,12 +7,12 @@ import distributors from '../data/products.js'
 import { Car, Zap, Cog, RadioTower, HeartPulse, TrainFront } from 'lucide-react'
 
 // Import Hero Images for rotating showcase marquee
-import heroImg1 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.37 PM (1).jpeg'
-import heroImg2 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.37 PM (2).jpeg'
-import heroImg3 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.37 PM.jpeg'
-import heroImg4 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.38 PM (1).jpeg'
-import heroImg5 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.38 PM (2).jpeg'
-import heroImg6 from '../assets/Hero_image/WhatsApp Image 2026-08-29 at 2.28.38 PM.jpeg'
+import heroImg1 from '../assets/Hero_image/hero_offer_1.jpeg'
+import heroImg2 from '../assets/Hero_image/hero_offer_2.jpeg'
+import heroImg3 from '../assets/Hero_image/hero_offer_3.jpeg'
+import heroImg4 from '../assets/Hero_image/hero_offer_4.jpeg'
+import heroImg5 from '../assets/Hero_image/hero_offer_5.jpeg'
+import heroImg6 from '../assets/Hero_image/hero_offer_6.jpeg'
 
 const PRODUCT_OFFERINGS = [
   { name: 'Industrial Power Module', image: heroImg1 },
