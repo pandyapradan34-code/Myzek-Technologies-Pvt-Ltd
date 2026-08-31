@@ -51,7 +51,7 @@ export const DONE_PRODUCTS = [
     slug: 'exc-series',
     url: 'https://elec.donepower.com/products_details/60.html',
     series: 'Industrial Control Power Supply',
-    range: '15/25/35/50/75/100/150/200/350/450/600/1200/1500W',
+    range: '15/25/35/50/75/100/150/200/350/450/600W',
     logo: imgLogo,
     image: imgEXC,
     images: [imgEXC],
