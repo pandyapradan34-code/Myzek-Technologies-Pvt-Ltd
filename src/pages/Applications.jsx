@@ -108,7 +108,7 @@ export default function Applications() {
 
       <section className="container section" data-aos="fade-up">
         <h2 style={{ textAlign: 'center', marginBottom: '3rem' }} data-aos="fade-up">Our Application Areas</h2>
-        <div className="card-grid" data-aos="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+        <div className="card-grid" data-aos="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           {APPLICATION_AREAS.map((area, index) => (
             <div className="card" key={area.name} style={{ padding: '2rem' }} data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{area.icon}</div>

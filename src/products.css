@@ -106,7 +106,7 @@
 
 .distributor-title {
   font-family: var(--font-display);
-  font-size: 3.5rem;
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
   font-weight: 500;
   color: var(--color-ink);
   margin-bottom: 0.5rem;
@@ -477,8 +477,12 @@
   }
   .products-sidebar {
     flex: none;
-    padding: 1.5rem 1.5rem 0.5rem var(--space-4);
+    padding: 1.5rem 1.25rem 0.5rem;
     width: 100%;
+  }
+  .products-main {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
   .sidebar-list {
     flex-direction: row;
@@ -505,7 +509,7 @@
     flex: 1 1 100%;
   }
   .products-sidebar {
-    padding: 1rem 1rem 0 var(--space-4);
+    padding: 1rem 1rem 0;
   }
   .pcard-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

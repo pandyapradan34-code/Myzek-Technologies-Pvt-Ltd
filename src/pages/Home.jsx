@@ -5,6 +5,8 @@ import doneLogo from '../assets/done-logo.bmp'
 import mornsunLogo from '../assets/Mornsun.png'
 import distributors from '../data/products.js'
 import { Car, Zap, Cog, RadioTower, HeartPulse, TrainFront } from 'lucide-react'
+import facilityPhoto1 from '../assets/Facility Photo/Gemini_Generated_Image_cql9ocql9ocql9oc.png'
+import facilityPhoto2 from '../assets/Facility Photo/Gemini_Generated_Image_ho1zpzho1zpzho1z.png'
 
 // Import Hero Images for rotating showcase marquee
 import heroImg1 from '../assets/Hero_image/hero_offer_1.jpeg'
@@ -48,6 +50,7 @@ export default function Home() {
     }
 
     // Scroll reveal animation for sections
+    let ioInd;
     if ('IntersectionObserver' in window) {
       const revealElements = document.querySelectorAll('.reveal')
       const revealObserver = new IntersectionObserver(
@@ -63,9 +66,25 @@ export default function Home() {
       )
 
       revealElements.forEach(el => revealObserver.observe(el))
+
+      // Industry grid reveal observer for Home Page
+      const indGrid = document.querySelector('.industry-grid')
+      if (indGrid) {
+        ioInd = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              indGrid.classList.add('in')
+              ioInd.disconnect()
+            }
+          },
+          { threshold: 0.05 }
+        )
+        ioInd.observe(indGrid)
+      }
       
       return () => {
         revealObserver.disconnect()
+        if (ioInd) ioInd.disconnect()
       }
     }
   }, [])
@@ -156,9 +175,21 @@ export default function Home() {
               Learn More About Us &rarr;
             </a>
           </div>
-          <div className="placeholder-media" style={{ height: '100%', minHeight: '300px' }}>
-            <span className="placeholder-media-icon">🏭</span>
-            <span>Facility Photo</span>
+          <div className="facility-marquee-container">
+            <div className="facility-marquee-track">
+              <div className="facility-marquee-item">
+                <img src={facilityPhoto1} alt="Myzek Electronics Manufacturing Workstations" />
+              </div>
+              <div className="facility-marquee-item">
+                <img src={facilityPhoto2} alt="Myzek Manufacturing Process steps" />
+              </div>
+              <div className="facility-marquee-item">
+                <img src={facilityPhoto1} alt="Myzek Electronics Manufacturing Workstations" />
+              </div>
+              <div className="facility-marquee-item">
+                <img src={facilityPhoto2} alt="Myzek Manufacturing Process steps" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -180,8 +211,8 @@ export default function Home() {
             { name: 'Telecommunications', Icon: RadioTower },
             { name: 'Medical Devices', Icon: HeartPulse },
             { name: 'Railways', Icon: TrainFront },
-          ].map(({ name, Icon }) => (
-            <div className="industry-tile" key={name}>
+          ].map(({ name, Icon }, idx) => (
+            <div className="industry-tile" key={name} style={{ '--tile-idx': idx }}>
               <Icon size={26} strokeWidth={1.75} />
               <p>{name}</p>
             </div>

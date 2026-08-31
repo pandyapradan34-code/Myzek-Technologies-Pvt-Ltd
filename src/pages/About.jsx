@@ -276,8 +276,8 @@ import { ICONS, CORE_MARKETS, OEM_SEGMENTS } from '../data/industries';
 function IndustryGrid({ items }) {
   return (
     <div className="ab-ind">
-      {items.map((it) => (
-        <div className="ab-cell" key={it.name}>
+      {items.map((it, idx) => (
+        <div className="ab-cell" key={it.name} style={{ '--cell-idx': idx }}>
           {/* static, hand-authored SVG paths — safe to inject */}
           <svg viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: ICONS[it.icon] }} />
           <div className="ab-t">{it.name}</div>
@@ -288,25 +288,52 @@ function IndustryGrid({ items }) {
 }
 
 export default function About() {
-  // fade sections up as they enter the viewport
+  // Trigger scroll-reveal animations (threshold: 0.3)
   useEffect(() => {
-    const els = document.querySelectorAll('.ab-rv');
-    if (!els.length) return undefined;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e, i) => {
-          if (e.isIntersecting) {
-            setTimeout(() => e.target.classList.add('in'), i * 70);
-            io.unobserve(e.target);
+    // 1. Timeline Observer
+    const timeline = document.querySelector('.ab-steps');
+    if (timeline) {
+      const ioTimeline = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            timeline.classList.add('in');
+            ioTimeline.disconnect();
           }
-        });
-      },
-      { threshold: 0.15 }
-    );
+        },
+        { threshold: 0.05 }
+      );
+      ioTimeline.observe(timeline);
+    }
 
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    // 2. Strengths Band Grid Observer
+    const bandGrid = document.querySelector('.ab-band-grid');
+    if (bandGrid) {
+      const ioBand = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            bandGrid.classList.add('in');
+            ioBand.disconnect();
+          }
+        },
+        { threshold: 0.05 }
+      );
+      ioBand.observe(bandGrid);
+    }
+
+    // 3. Key Markets Grids Observer
+    const indGrids = document.querySelectorAll('.ab-ind');
+    indGrids.forEach((grid) => {
+      const ioInd = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            grid.classList.add('in');
+            ioInd.disconnect();
+          }
+        },
+        { threshold: 0.05 }
+      );
+      ioInd.observe(grid);
+    });
   }, []);
 
   return (
@@ -326,8 +353,8 @@ export default function About() {
       {/* ---------- INTRO + FACTS PANEL ---------- */}
       <section>
         <div className="ab-wrap ab-intro">
-          <div className="ab-rv">
-            <div className="ab-eyebrow">WHO WE ARE</div>
+          <div>
+            <div className="ab-eyebrow">Who we are</div>
             <h2>BUILT ON RESPONSIVE SERVICE</h2>
             <p className="ab-lead">
               Myzek Technologies Pvt Ltd is a leading authorized distributor and stockist of
@@ -351,7 +378,7 @@ export default function About() {
             </p>
           </div>
 
-          <aside className="ab-facts ab-rv">
+          <aside className="ab-facts">
             <div className="ab-flabel">COMPANY AT A GLANCE</div>
             <dl>
               <div className="ab-row"><dt>Established</dt><dd>2017</dd></div>
@@ -371,7 +398,7 @@ export default function About() {
       <section className="ab-band">
         <div className="ab-wrap">
           <div className="ab-band-grid">
-            <div className="ab-bcell ab-rv">
+            <div className="ab-bcell bcell-1">
               <div className="ab-k">01</div>
               <h3>COMPETITIVE PRICING</h3>
               <p>
@@ -379,7 +406,8 @@ export default function About() {
                 or ten thousand.
               </p>
             </div>
-            <div className="ab-bcell ab-rv">
+            <div className="ab-band-divider div-1"></div>
+            <div className="ab-bcell bcell-2">
               <div className="ab-k">02</div>
               <h3>READY-STOCK AVAILABILITY</h3>
               <p>
@@ -387,7 +415,8 @@ export default function About() {
                 waiting on a factory lead time.
               </p>
             </div>
-            <div className="ab-bcell ab-rv">
+            <div className="ab-band-divider div-2"></div>
+            <div className="ab-bcell bcell-3">
               <div className="ab-k">03</div>
               <h3>TECHNICAL SUPPORT</h3>
               <p>
@@ -402,31 +431,31 @@ export default function About() {
       {/* ---------- LIFECYCLE ---------- */}
       <section className="ab-life">
         <div className="ab-wrap">
-          <div className="ab-eyebrow">HOW WE SUPPORT YOU</div>
+          <div className="ab-eyebrow">How we support you</div>
           <h2>SUPPORTING YOUR PRODUCT LIFECYCLE</h2>
           <div className="ab-steps">
-            <div className="ab-step ab-rv">
+            <div className="ab-step step-1">
               <div className="ab-s">STAGE 01</div><h3>SPECIFY</h3>
               <p>
                 We help identify and source the right components against your specification
                 while your design is still taking shape.
               </p>
             </div>
-            <div className="ab-step ab-rv">
+            <div className="ab-step step-2">
               <div className="ab-s">STAGE 02</div><h3>SAMPLE</h3>
               <p>
                 Small quantities supplied quickly, so your development team isn&apos;t held up
                 waiting on parts.
               </p>
             </div>
-            <div className="ab-step ab-rv">
+            <div className="ab-step step-3">
               <div className="ab-s">STAGE 03</div><h3>SUPPLY</h3>
               <p>
                 We manage your supply requirements and delivery schedules as your volumes
                 scale up.
               </p>
             </div>
-            <div className="ab-step ab-rv">
+            <div className="ab-step step-4">
               <div className="ab-s">STAGE 04</div><h3>SUSTAIN</h3>
               <p>
                 Continuity of supply maintained across the life of your product, including
@@ -440,10 +469,10 @@ export default function About() {
       {/* ---------- INDUSTRY GRID ---------- */}
       <section>
         <div className="ab-wrap">
-          <div className="ab-eyebrow">INDUSTRIES WE SERVE</div>
+          <div className="ab-eyebrow">Industries we serve</div>
           <h2>OUR KEY MARKETS</h2>
           <p className="ab-note">
-            We supply industrial, OEM and technology-driven customers across high-growth sectors.
+            We serve industrial, OEM, and technology-driven customers across high-growth sectors.
           </p>
 
           <div className="ab-grp">
@@ -469,12 +498,12 @@ export default function About() {
       {/* ---------- CTA ---------- */}
       <section className="ab-cta">
         <div className="ab-wrap">
-          <div className="ab-eyebrow ab-center">GET IN TOUCH</div>
+          <div className="ab-eyebrow ab-center">Get in touch</div>
           <h2>LOOKING FOR A COMPONENT?</h2>
           <p>Share your requirement and we&apos;ll come back with availability and pricing.</p>
           <div className="ab-btns">
-            <a className="ab-btn ab-btn-p" href="/request-sample">REQUEST A SAMPLE</a>
-            <a className="ab-btn ab-btn-g" href="/contact">CONTACT US</a>
+            <a className="ab-btn ab-btn-p" href="/contact">REQUEST QUOTATION</a>
+            <a className="ab-btn ab-btn-g" href="/products">VIEW PRODUCTS</a>
           </div>
         </div>
       </section>

@@ -182,6 +182,12 @@
   font-size: 1.25rem;
 }
 
+@media (min-width: 1024px) {
+  .new-navbar-mobile-panel {
+    display: none;
+  }
+}
+
 /* --- NEW FOOTER (React Only) --- */
 .new-footer {
   background-color: var(--color-brand-dark);
@@ -227,7 +233,7 @@
   line-height: 1.6;
   color: var(--color-brand-muted);
   text-decoration: none;
-  display: inline-block;
+  display: block;
   margin-bottom: 0.75rem;
   transition: color 0.2s ease, transform 0.2s ease;
 }
