@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import AOS from 'aos'
 import companyLogo from '../assets/myzek-logo-light.png'
 import clafLogo from '../assets/claf.png'
 import doneLogo from '../assets/done-logo.bmp'
@@ -43,49 +44,20 @@ export default function Home() {
               logoObserver.disconnect()
             }
           },
-          { threshold: 0.35 }
+          { threshold: 0.2 }
         )
         logoObserver.observe(logo)
       }
     }
 
-    // Scroll reveal animation for sections
-    let ioInd;
-    if ('IntersectionObserver' in window) {
-      const revealElements = document.querySelectorAll('.reveal')
-      const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('active')
-              observer.unobserve(entry.target)
-            }
-          })
-        },
-        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-      )
+    // Refresh AOS scroll calculations on mount & after assets render
+    AOS.refreshHard()
+    const timer1 = setTimeout(() => AOS.refresh(), 100)
+    const timer2 = setTimeout(() => AOS.refresh(), 400)
 
-      revealElements.forEach(el => revealObserver.observe(el))
-
-      // Industry grid reveal observer for Home Page
-      const indGrid = document.querySelector('.industry-grid')
-      if (indGrid) {
-        ioInd = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              indGrid.classList.add('in')
-              ioInd.disconnect()
-            }
-          },
-          { threshold: 0.05 }
-        )
-        ioInd.observe(indGrid)
-      }
-      
-      return () => {
-        revealObserver.disconnect()
-        if (ioInd) ioInd.disconnect()
-      }
+    return () => {
+      clearTimeout(timer1)
+      clearTimeout(timer2)
     }
   }, [])
 
@@ -99,7 +71,7 @@ export default function Home() {
             <p className="eyebrow">Myzek Technologies</p>
             <h1>Precision Power & Electronic Solutions</h1>
             <p className="hero-lede">
-              We design and manufacture reliable power supplies, converters, and industrial components engineered for demanding environments and built to last.
+              Your trusted partner for electronic component sourcing, delivering quality products, competitive pricing, ready-stock availability, and responsive support from prototype to volume production.
             </p>
             <div className="hero-actions">
               <a className="btn btn-accent" href="/products">
@@ -122,10 +94,10 @@ export default function Home() {
       </section>
 
       {/* 2. PRODUCT / APPLICATION SECTION (Core Offerings Marquee) */}
-      <section className="section reveal delay-1" data-aos="fade-up">
+      <section className="section" data-aos="fade-up">
 
         <div className="container">
-          <div className="section-intro reveal delay-1" data-aos="fade-up" style={{ textAlign: 'center', margin: '0 auto 3rem', maxWidth: '800px' }}>
+          <div className="section-intro" data-aos="fade-up" style={{ textAlign: 'center', margin: '0 auto 3rem', maxWidth: '800px' }}>
             <p className="eyebrow">Products</p>
             <h2>Our Core Offerings</h2>
             <p style={{ maxWidth: '68ch', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.6' }}>
@@ -134,7 +106,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="products-marquee-container">
+        <div className="products-marquee-container" data-aos="fade-up">
           <div className="products-marquee-track">
             {[...Array(2)].flatMap((_, repIdx) => 
               PRODUCT_OFFERINGS.map((prod, idx) => (
@@ -151,7 +123,7 @@ export default function Home() {
         </div>
 
         <div className="container">
-          <div className="reveal delay-1" style={{ textAlign: 'center', marginTop: '3rem' }}>
+          <div data-aos="fade-up" style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a className="btn btn-accent" href="/products">
               Explore All Products &rarr;
             </a>
@@ -160,9 +132,9 @@ export default function Home() {
       </section>
 
       {/* 3. ABOUT US SECTION */}
-      <section className="section section-alt reveal delay-1" data-aos="fade-up">
+      <section className="section section-alt" data-aos="fade-up">
         <div className="container home-about-grid">
-          <div>
+          <div data-aos="fade-up">
             <p className="eyebrow">About Myzek</p>
             <h2>Built for Industry. Delivered at Scale.</h2>
             <p>
@@ -175,7 +147,7 @@ export default function Home() {
               Learn More About Us &rarr;
             </a>
           </div>
-          <div className="facility-marquee-container">
+          <div className="facility-marquee-container" data-aos="fade-up">
             <div className="facility-marquee-track">
               <div className="facility-marquee-item">
                 <img src={facilityPhoto1} alt="Myzek Electronics Manufacturing Workstations" />
@@ -195,7 +167,7 @@ export default function Home() {
       </section>
 
       {/* 4. FEATURES / SERVICES SECTION (Applications) */}
-      <section className="container section reveal delay-1" data-aos="fade-up">
+      <section className="container section" data-aos="fade-up">
         <div className="section-intro" data-aos="fade-up">
           <p className="eyebrow">Applications</p>
           <h2>Industries We Serve</h2>
@@ -203,24 +175,29 @@ export default function Home() {
             Our components power critical infrastructure across a wide variety of sectors, ensuring flawless operation where it matters most.
           </p>
           
-                <div className="industry-grid">
-          {[
-            { name: 'Automotive', Icon: Car },
-            { name: 'Energy & Power', Icon: Zap },
-            { name: 'Industrial Automation', Icon: Cog },
-            { name: 'Telecommunications', Icon: RadioTower },
-            { name: 'Medical Devices', Icon: HeartPulse },
-            { name: 'Railways', Icon: TrainFront },
-          ].map(({ name, Icon }, idx) => (
-            <div className="industry-tile" key={name} style={{ '--tile-idx': idx }}>
-              <Icon size={26} strokeWidth={1.75} />
-              <p>{name}</p>
-            </div>
-          ))}
-
+          <div className="industry-grid">
+            {[
+              { name: 'Automotive', Icon: Car },
+              { name: 'Energy & Power', Icon: Zap },
+              { name: 'Industrial Automation', Icon: Cog },
+              { name: 'Telecommunications', Icon: RadioTower },
+              { name: 'Medical Devices', Icon: HeartPulse },
+              { name: 'Railways', Icon: TrainFront },
+            ].map(({ name, Icon }, idx) => (
+              <div 
+                className="industry-tile" 
+                key={name} 
+                style={{ '--tile-idx': idx }}
+                data-aos="fade-up"
+                data-aos-delay={idx * 60}
+              >
+                <Icon size={26} strokeWidth={1.75} />
+                <p>{name}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        </div>
-                <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center' }} data-aos="fade-up">
           <a className="btn btn-accent" href="/applications">
             Explore More Applications &rarr;
           </a>
@@ -452,7 +429,7 @@ export default function Home() {
 
 
       {/* 6. CONTACT / CTA SECTION */}
-      <section className="section reveal delay-1" data-aos="fade-up" style={{ backgroundColor: 'var(--color-primary)', color: 'white', textAlign: 'center', padding: '6rem 2rem' }}>
+      <section className="section" data-aos="fade-up" style={{ backgroundColor: 'var(--color-primary)', color: 'white', textAlign: 'center', padding: '6rem 2rem' }}>
         <div className="container">
           <h2 style={{ color: 'white', marginBottom: '1.5rem' }}>Ready to elevate your operations?</h2>
           <p style={{ color: 'var(--color-text-on-dark-muted)', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.1rem' }}>

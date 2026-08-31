@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
           <p className="new-footer-text">
             YOUR PARTNER IN ELECTRONIC COMPONENTS <br />
-            An authorized distributor and stockist of electronic components, 
+            An authorized distributor, stockist &amp; assembler partner of electronic components, 
             supporting industrial, OEM and technology-driven customers across India.
           </p>
           <div style={{ marginTop: '1.5rem' }}>
@@ -58,16 +58,16 @@ export default function Footer() {
 
         <div className="new-footer-col">
           <h4>Product &amp; Services</h4>
-          <Link to="/products" className="new-footer-link">Power Supplies</Link>
-          <Link to="/products" className="new-footer-link">DC-DC Converters</Link>
-          <Link to="/products" className="new-footer-link">Transceivers</Link>
+          <Link to="/products?distributor=done" className="new-footer-link">Power Supplies</Link>
+          <Link to="/products?distributor=claf" className="new-footer-link">DC-DC Converters</Link>
+          <Link to="/products?distributor=claf" className="new-footer-link">Transceivers</Link>
           <Link to="/applications" className="new-footer-link">All Applications</Link>
         </div>
 
         <div className="new-footer-col">
           <h4>Legal &amp; Resources</h4>
-          <Link to="/" className="new-footer-link">Privacy Policy</Link>
-          <Link to="/" className="new-footer-link">Terms &amp; Conditions</Link>
+          <Link to="/privacy" className="new-footer-link">Privacy Policy</Link>
+          <Link to="/terms" className="new-footer-link">Terms &amp; Conditions</Link>
           <Link to="/contact" className="new-footer-link">Support</Link>
         </div>
 

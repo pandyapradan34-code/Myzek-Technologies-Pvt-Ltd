@@ -351,17 +351,250 @@
 }
 
 /* ---------- grid ---------- */
-
 .pcard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+/* ---------- Group Filter Bar ---------- */
+.group-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0.85rem 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.group-filter-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #334155;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.group-filter-select {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.group-filter-select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.group-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.group-chip {
+  padding: 0.28rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.group-chip:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+
+.group-chip.active {
+  background: var(--color-primary, #0f2b48);
+  border-color: var(--color-primary, #0f2b48);
+  color: #ffffff;
+}
+
+/* ---------- Horizontal Product Card (Compact Reference Layout) ---------- */
+.pcard-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pcard-horizontal-card {
+  background: #ffffff;
+  border: 1px solid #e8ecf1;
+  border-radius: 10px;
+  padding: 1.35rem 1.75rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(15, 32, 56, 0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.pcard-horizontal-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 18px rgba(15, 32, 56, 0.07);
+  transform: translateY(-2px);
+}
+
+.pcard-h-media {
+  width: 190px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pcard-h-logo {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 0.85rem;
+}
+
+.pcard-h-img-wrap {
+  width: 100%;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pcard-h-img {
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.pcard-horizontal-card:hover .pcard-h-img {
+  transform: scale(1.03);
+}
+
+.pcard-h-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pcard-h-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.15rem;
+}
+
+.pcard-h-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f2b48;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.pcard-h-viewmore {
+  color: #65a30d;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.pcard-h-viewmore:hover {
+  color: #4d7c0f;
+  transform: translateX(3px);
+}
+
+.pcard-h-range {
+  font-size: 0.92rem;
+  color: #475569;
+  font-weight: 600;
+  margin: 0.2rem 0 0.65rem;
+}
+
+.pcard-h-desc {
+  font-size: 0.825rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 0.85rem;
+}
+
+.pcard-h-features-section {
+  margin: 0 0 1rem;
+}
+
+.pcard-h-features-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.35rem;
+}
+
+.pcard-h-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.pcard-h-cert {
+  margin-top: 0.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.pcard-h-cert img {
+  max-height: 28px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .pcard-horizontal-card {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+  .pcard-h-media {
+    width: 100%;
+    align-items: flex-start;
+  }
+  .pcard-h-img-wrap {
+    min-height: 130px;
+  }
 }
 
 /* ---------- card ---------- */
 
 .pcard {
-  border: 1px solid #e4e8ec;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
   overflow: hidden;
   background: #fff;
@@ -371,9 +604,9 @@
 }
 
 .pcard:hover {
-  border-color: #c3ccd5;
+  border-color: #cbd5e1;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(21, 58, 91, 0.08);
+  box-shadow: 0 4px 12px rgba(21, 58, 91, 0.07);
 }
 
 /* ---------- media ---------- */
@@ -381,11 +614,11 @@
 .pcard-media {
   position: relative;
   aspect-ratio: 1 / 1;
-  background: #f4f6f8;
+  background: #f8fafc;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.85rem;
   overflow: hidden;
 }
 
@@ -395,20 +628,20 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .pcard:hover .pcard-img {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 /* second view fades in on hover */
 .pcard-img-alt {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
+  top: 0.85rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 0.85rem;
   margin: auto;
   opacity: 0;
 }
@@ -421,7 +654,6 @@
   opacity: 0;
 }
 
-
 .pcard-noimg {
   font-size: 0.7rem;
   letter-spacing: 0.1em;
@@ -433,14 +665,14 @@
 
 .pcard-badge {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: var(--color-primary);
+  top: 0.45rem;
+  right: 0.45rem;
+  background: var(--color-primary, #0f2b48);
   color: #fff;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  padding: 0.25rem 0.5rem;
+  padding: 0.2rem 0.45rem;
   border-radius: 4px;
   z-index: 2;
 }
@@ -448,15 +680,15 @@
 /* ---------- body ---------- */
 
 .pcard-body {
-  padding: 0.7rem 0.8rem 0.85rem;
-  border-top: 1px solid #eef1f4;
+  padding: 0.75rem 0.85rem;
+  border-top: 1px solid #f1f5f9;
 }
 
 .pcard-name {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: var(--color-primary);
+  color: var(--color-primary, #0f2b48);
   margin: 0 0 0.2rem;
   line-height: 1.35;
   word-break: break-word;
@@ -464,7 +696,7 @@
 
 .pcard-spec {
   font-size: 0.7rem;
-  color: #98a2ad;
+  color: #64748b;
   margin: 0;
   letter-spacing: 0.03em;
 }
@@ -499,8 +731,8 @@
     border: 1px solid #e5e7eb;
   }
   .pcard-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 0.7rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.85rem;
   }
 }
 
@@ -516,8 +748,9 @@
     gap: 0.6rem;
   }
   .pcard-media {
-    padding: 0.7rem;
+    padding: 0.6rem;
   }
+}
   .series-block {
     margin-bottom: 2rem;
   }

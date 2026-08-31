@@ -10,6 +10,8 @@ import Products from './pages/Products.jsx'
 import Applications from './pages/Applications.jsx'
 import Contact from './pages/Contact.jsx'
 import RequestSample from './pages/RequestSample.jsx'
+import Terms from './pages/Terms.jsx'
+import Privacy from './pages/Privacy.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 import AOS from 'aos'
@@ -21,24 +23,30 @@ export default function App() {
   const location = useLocation()
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+    window.scrollTo(0, 0)
     
     // Refresh AOS animations after route changes to bind scroll listeners to new DOM elements
     const timer = setTimeout(() => {
-      AOS.refresh()
-    }, 200)
+      AOS.refreshHard()
+    }, 100)
     
     return () => clearTimeout(timer)
-  }, [location.pathname])
+  }, [location.pathname, location.search])
 
   useEffect(() => {
     AOS.init({
-      duration: 800,
-      once: true, // whether animation should happen only once - while scrolling down
+      duration: 700,
+      once: false, // ensures all scroll animations trigger whenever scrolled into view
+      offset: 50,
+      easing: 'ease-out-cubic',
     })
+
+    const onPageLoad = () => {
+      AOS.refreshHard()
+    }
+    
+    window.addEventListener('load', onPageLoad)
+    return () => window.removeEventListener('load', onPageLoad)
   }, [])
 
   return (
@@ -52,6 +60,10 @@ export default function App() {
           <Route path="/applications" element={<Applications />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/request-sample" element={<RequestSample />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/terms-and-conditions" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

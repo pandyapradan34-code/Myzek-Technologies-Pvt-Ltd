@@ -344,7 +344,7 @@ export default function About() {
           {/* <div className="ab-crumb">HOME&nbsp; /&nbsp; ABOUT US</div> */}
           <h1>YOUR PARTNER IN ELECTRONIC COMPONENTS</h1>
           <p className="ab-sub">
-            An authorized distributor and stockist of electronic components, supporting
+            An authorized distributor, stockist &amp; assembler partner of electronic components, supporting
             industrial, OEM and technology-driven customers across India.
           </p>
         </div>
@@ -357,7 +357,7 @@ export default function About() {
             <div className="ab-eyebrow">Who we are</div>
             <h2>BUILT ON RESPONSIVE SERVICE</h2>
             <p className="ab-lead">
-              Myzek Technologies Pvt Ltd is a leading authorized distributor and stockist of
+              Myzek Technologies Pvt Ltd is a leading authorized distributor, stockist, and assembler partner of
               electronic components. Since 2017, we have built our business on strong customer
               relationships, responsive service, and value-driven solutions.
             </p>
@@ -382,7 +382,7 @@ export default function About() {
             <div className="ab-flabel">COMPANY AT A GLANCE</div>
             <dl>
               <div className="ab-row"><dt>Established</dt><dd>2017</dd></div>
-              <div className="ab-row"><dt>Role</dt><dd>Authorized distributor<br />&amp; stockist</dd></div>
+              <div className="ab-row"><dt>Role</dt><dd>Authorized distributor<br />&amp; stockist / Assembler partner</dd></div>
               <div className="ab-row"><dt>Customers</dt><dd>Hundreds served,<br />industrial &amp; OEM</dd></div>
               <div className="ab-row"><dt>Supply partners</dt><dd>Leading global<br />suppliers</dd></div>
               <div className="ab-row"><dt>Coverage</dt><dd>21 industry<br />segments</dd></div>
