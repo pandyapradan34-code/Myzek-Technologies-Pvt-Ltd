@@ -16,14 +16,16 @@ import heroImg3 from '../assets/Hero_image/hero_offer_3.jpeg'
 import heroImg4 from '../assets/Hero_image/hero_offer_4.jpeg'
 import heroImg5 from '../assets/Hero_image/hero_offer_5.jpeg'
 import heroImg6 from '../assets/Hero_image/hero_offer_6.jpeg'
+import heroImg7 from '../assets/Hero_image/hero_offer_7.jpeg'
 
 const PRODUCT_OFFERINGS = [
-  { name: 'Industrial Power Module', image: heroImg1 },
-  { name: 'Precision Converter', image: heroImg2 },
-  { name: 'AC/DC Power Supply', image: heroImg3 },
-  { name: 'DC/DC Rail Module', image: heroImg4 },
-  { name: 'Custom Electronics Unit', image: heroImg5 },
-  { name: 'High-Density Controller', image: heroImg6 },
+  { name: 'Industrial Equipment Application — DL-350W-EXC', image: heroImg1 },
+  { name: 'Industrial Equipment Application — DL-100W-EXC', image: heroImg2 },
+  { name: 'Lighting Application — EXL Series', image: heroImg3 },
+  { name: 'Home Automation Application — DL-15W-EXC', image: heroImg4 },
+  { name: 'Industrial Equipment Application — EXS Series', image: heroImg5 },
+  { name: 'PLC Related Application — DL-60W-EDC', image: heroImg6 },
+  { name: 'Automation Panel Application — DL-120W-V24M-EDC', image: heroImg7 },
 ]
 
 export default function Home() {

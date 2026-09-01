@@ -1,3 +1,5 @@
+import { Bot, HeartPulse, Layers, FlaskConical, Crosshair, CheckCircle2 } from 'lucide-react'
+
 const APPLICATION_AREAS = [
   {
     name: '1. Industrial Automation & Control',
@@ -31,7 +33,7 @@ const APPLICATION_AREAS = [
   },
   {
     name: '6. Motion Control & Robotics',
-    icon: '🤖',
+    icon: Bot,
     description: 'Automation, robotics, and advanced machinery require precise control of motors, movement, and machine functions.',
     applications: ['Servo systems', 'Motor control', 'Robotics', 'Motion controllers', 'Industrial robots', 'Automated machinery', 'CNC systems', 'AGV and automated equipment']
   },
@@ -43,13 +45,13 @@ const APPLICATION_AREAS = [
   },
   {
     name: '8. Medical & Healthcare Equipment',
-    icon: '🏥',
+    icon: HeartPulse,
     description: 'Electronic components are essential for the control, monitoring, communication, and power management of medical and healthcare equipment.',
     applications: ['Medical equipment', 'Patient monitoring', 'Diagnostic systems', 'Healthcare automation', 'Control electronics', 'Power management', 'Measurement systems']
   },
   {
     name: '9. Textile Machinery',
-    icon: '🧵',
+    icon: Layers,
     description: 'We support textile machinery manufacturers with components used in machine control, automation, motion control, sensing, and electronic interfaces.',
     applications: ['Jacquard machinery', 'Embroidery machines', 'Knitting machines', 'Textile printing machines', 'Spinning and weaving equipment', 'Machine control systems', 'Motor control', 'Automation systems']
   },
@@ -67,13 +69,13 @@ const APPLICATION_AREAS = [
   },
   {
     name: '12. Pharmaceutical & Laboratory Machinery',
-    icon: '💊',
+    icon: FlaskConical,
     description: 'We support pharmaceutical and laboratory equipment manufacturers with components for precise control, monitoring, automation, and process management.',
     applications: ['Pharmaceutical machinery', 'Laboratory equipment', 'Process automation', 'Temperature control', 'Monitoring systems', 'Packaging equipment', 'Measurement systems', 'Control systems']
   },
   {
     name: '13. CNC, Laser & Cutting Machinery',
-    icon: '✂️',
+    icon: Crosshair,
     description: 'Advanced manufacturing equipment requires high-performance electronics for precision control, motion, power management, and automation.',
     applications: ['CNC machines', 'Laser cutting machines', 'Diamond cutting machines', 'Motion control', 'Servo systems', 'Machine controllers', 'Power electronics', 'Automation panels']
   },
@@ -109,76 +111,130 @@ export default function Applications() {
       <section className="container section" data-aos="fade-up">
         <h2 style={{ textAlign: 'center', marginBottom: '3rem' }} data-aos="fade-up">Our Application Areas</h2>
         <div className="card-grid" data-aos="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-          {APPLICATION_AREAS.map((area, index) => (
-            <div className="card" key={area.name} style={{ padding: '2rem' }} data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
-              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{area.icon}</div>
-              <h3 style={{ marginBottom: '1rem' }}>{area.name}</h3>
-              <p style={{ marginBottom: '1.5rem' }}>{area.description}</p>
-              <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Applications include:</h4>
-              <ul style={{ paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                {area.applications.map(app => <li key={app}>{app}</li>)}
-              </ul>
-            </div>
-          ))}
+          {APPLICATION_AREAS.map((area, index) => {
+            const IconComp = area.icon
+            return (
+              <div className="card" key={area.name} style={{ padding: '2rem' }} data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem', minHeight: '52px', display: 'flex', alignItems: 'center' }}>
+                  {typeof IconComp === 'string' ? (
+                    IconComp
+                  ) : (
+                    <IconComp size={48} strokeWidth={1.8} style={{ color: 'var(--color-accent, #e8871e)' }} />
+                  )}
+                </div>
+                <h3 style={{ marginBottom: '1rem' }}>{area.name}</h3>
+                <p style={{ marginBottom: '1.5rem' }}>{area.description}</p>
+                <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Applications include:</h4>
+                <ul style={{ paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                  {area.applications.map(app => <li key={app}>{app}</li>)}
+                </ul>
+              </div>
+            )
+          })}
         </div>
       </section>
 
-      <section className="section" data-aos="fade-up" style={{ background: 'var(--color-surface)', padding: '4rem 1rem' }}>
+      <section className="prototype-production-section" data-aos="fade-up">
         <div className="container">
-          <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>From Prototype to Production</h2>
-          <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem', fontSize: '1.1rem' }}>
-            Our support extends across the complete product development and production lifecycle.
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
-            <div className="card" data-aos="fade-up" style={{ padding: '1.5rem' }}>
-              <h3 style={{ marginBottom: '0.5rem' }}>Design & Prototyping</h3>
-              <p>Source components for new product development, prototypes, and engineering projects.</p>
+          <div className="prototype-production-header">
+            <h2>From Prototype to Production</h2>
+            <p>
+              Our support extends across the complete product development and production lifecycle.
+            </p>
+          </div>
+          <div className="prototype-production-grid">
+            <div className="prototype-step-item" data-aos="fade-up" data-aos-delay="0">
+              <div className="prototype-step-badge">01</div>
+              <h3 className="prototype-step-title">Design & Prototyping</h3>
+              <p className="prototype-step-desc">
+                Source components for new product development, prototypes, and engineering projects.
+              </p>
             </div>
-            <div className="card" data-aos="fade-up" style={{ padding: '1.5rem' }}>
-              <h3 style={{ marginBottom: '0.5rem' }}>Engineering Support</h3>
-              <p>Help identify suitable components based on technical specifications, application requirements, and availability.</p>
+            <div className="prototype-step-item" data-aos="fade-up" data-aos-delay="100">
+              <div className="prototype-step-badge">02</div>
+              <h3 className="prototype-step-title">Engineering Support</h3>
+              <p className="prototype-step-desc">
+                Help identify suitable components based on technical specifications, application requirements, and availability.
+              </p>
             </div>
-            <div className="card" data-aos="fade-up" style={{ padding: '1.5rem' }}>
-              <h3 style={{ marginBottom: '0.5rem' }}>Pilot Production</h3>
-              <p>Support initial production requirements while maintaining sourcing flexibility.</p>
+            <div className="prototype-step-item" data-aos="fade-up" data-aos-delay="200">
+              <div className="prototype-step-badge">03</div>
+              <h3 className="prototype-step-title">Pilot Production</h3>
+              <p className="prototype-step-desc">
+                Support initial production requirements while maintaining sourcing flexibility.
+              </p>
             </div>
-            <div className="card" data-aos="fade-up" style={{ padding: '1.5rem' }}>
-              <h3 style={{ marginBottom: '0.5rem' }}>Volume Production</h3>
-              <p>Provide competitive sourcing and supply support for larger production requirements.</p>
+            <div className="prototype-step-item" data-aos="fade-up" data-aos-delay="300">
+              <div className="prototype-step-badge">04</div>
+              <h3 className="prototype-step-title">Volume Production</h3>
+              <p className="prototype-step-desc">
+                Provide competitive sourcing and supply support for larger production requirements.
+              </p>
             </div>
-            <div className="card" data-aos="fade-up" style={{ padding: '1.5rem' }}>
-              <h3 style={{ marginBottom: '0.5rem' }}>Long-Term Supply</h3>
-              <p>Help customers maintain component availability and supply continuity throughout the product lifecycle.</p>
+            <div className="prototype-step-item" data-aos="fade-up" data-aos-delay="400">
+              <div className="prototype-step-badge">05</div>
+              <h3 className="prototype-step-title">Long-Term Supply</h3>
+              <p className="prototype-step-desc">
+                Help customers maintain component availability and supply continuity throughout the product lifecycle.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="container section" data-aos="fade-up" style={{ paddingBottom: '5rem' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>Why Myzek for Your Application?</h2>
-        <p style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem', fontSize: '1.1rem' }}>
-          We combine product availability, sourcing expertise, and responsive customer support to help businesses manage their electronic component requirements.
-        </p>
-        <div className="card" data-aos="fade-up" style={{ padding: '3rem', margin: '0 auto', maxWidth: '800px' }}>
-          <h3 style={{ marginBottom: '1.5rem' }}>Our strengths include:</h3>
-          <ul style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-            gap: '1rem',
-            paddingLeft: '1.25rem', 
-            margin: 0 
-          }}>
-            <li>Authorized distribution and sourcing</li>
-            <li>Ready-stock availability</li>
-            <li>Competitive pricing</li>
-            <li>Wide component portfolio</li>
-            <li>Technical and product support</li>
-            <li>BOM and RFQ support</li>
-            <li>Prototype-to-production support</li>
-            <li>Reliable sourcing</li>
-            <li>Responsive customer service</li>
-            <li>Long-term supply support</li>
-          </ul>
+      <section className="why-myzek-section" data-aos="fade-up">
+        <div className="container">
+          <div className="why-myzek-header">
+            <h2>Why Myzek for your application?</h2>
+            <p>
+              We combine product availability, sourcing expertise, and responsive customer support to help businesses manage their electronic component requirements.
+            </p>
+          </div>
+          <div className="why-myzek-card" data-aos="fade-up">
+            <h3 className="why-myzek-card-title">Our strengths include:</h3>
+            <div className="why-myzek-grid">
+              <div className="why-myzek-item">
+                <CheckCircle2 className="why-myzek-check" size={20} strokeWidth={2} />
+                <span>Authorized distribution and sourcing</span>
+              </div>
+              <div className="why-myzek-item">
+                <CheckCircle2 className="why-myzek-check" size={20} strokeWidth={2} />
+                <span>Ready-stock availability</span>
+              </div>
+              <div className="why-myzek-item">
+                <CheckCircle2 className="why-myzek-check" size={20} strokeWidth={2} />
+                <span>Competitive pricing</span>
+              </div>
+              <div className="why-myzek-item">
+                <CheckCircle2 className="why-myzek-check" size={20} strokeWidth={2} />
+                <span>Wide component portfolio</span>
+              </div>
+              <div className="why-myzek-item">
+                <CheckCircle2 className="why-myzek-check" size={20} strokeWidth={2} />
+                <span>Technical and product support</span>
+              </div>
+              <div className="why-myzek-item">
+                <CheckCircle2 className="why-myzek-check" size={20} strokeWidth={2} />
+                <span>BOM and RFQ support</span>
+              </div>
+              <div className="why-myzek-item">
+                <CheckCircle2 className="why-myzek-check" size={20} strokeWidth={2} />
+                <span>Prototype-to-production support</span>
+              </div>
+              <div className="why-myzek-item">
+                <CheckCircle2 className="why-myzek-check" size={20} strokeWidth={2} />
+                <span>Reliable sourcing</span>
+              </div>
+              <div className="why-myzek-item">
+                <CheckCircle2 className="why-myzek-check" size={20} strokeWidth={2} />
+                <span>Responsive customer service</span>
+              </div>
+              <div className="why-myzek-item">
+                <CheckCircle2 className="why-myzek-check" size={20} strokeWidth={2} />
+                <span>Long-term supply support</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
