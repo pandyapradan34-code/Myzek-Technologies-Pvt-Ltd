@@ -1,87 +1,117 @@
-import { Bot, HeartPulse, Layers, FlaskConical, Crosshair, CheckCircle2 } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
+import {
+  IconIndustrialAutomation,
+  IconPowerElectronics,
+  IconElectricVehicles,
+  IconSolarRenewable,
+  IconEmbeddedIoT,
+  IconMotionRobotics,
+  IconRailwayTransportation,
+  IconMedicalHealthcare,
+  IconTextileMachinery,
+  IconElevatorEscalator,
+  IconPackagingMachinery,
+  IconPharmaLaboratory,
+  IconCNCLaser,
+  IconBuildingAutomation
+} from '../components/ApplicationIcons'
 
 const APPLICATION_AREAS = [
   {
     name: '1. Industrial Automation & Control',
-    icon: '⚙️',
+    icon: IconIndustrialAutomation,
+    category: 'Industrial',
     description: 'Electronic components play a critical role in modern industrial automation and machine-control systems. We support manufacturers and OEMs with components used for control, monitoring, communication, and automation.',
     applications: ['PLC and control systems', 'Industrial control panels', 'Machine automation', 'Motor control', 'Process control', 'Human-machine interfaces (HMI)', 'Industrial communication', 'Sensors and monitoring systems']
   },
   {
     name: '2. Power Electronics & Energy Management',
-    icon: '⚡',
+    icon: IconPowerElectronics,
+    category: 'Power & Energy',
     description: 'We support power-intensive applications with components used for power conversion, regulation, switching, protection, and energy management.',
     applications: ['Power supplies', 'AC/DC and DC/DC conversion', 'Inverters', 'Power management systems', 'Battery systems', 'Energy storage', 'Motor drives', 'Power control systems']
   },
   {
     name: '3. Electric Vehicles & Charging Infrastructure',
-    icon: '🔋',
+    icon: IconElectricVehicles,
+    category: 'Automotive & EV',
     description: 'The growth of electric mobility requires reliable electronic systems for charging, power conversion, battery management, and vehicle control. We support EV manufacturers and infrastructure developers.',
     applications: ['EV charging stations', 'Battery management systems', 'Power conversion', 'Motor controllers', 'Charging control systems', 'Energy monitoring', 'Protection and switching', 'EV infrastructure']
   },
   {
     name: '4. Solar & Renewable Energy',
-    icon: '☀️',
+    icon: IconSolarRenewable,
+    category: 'Clean Energy',
     description: 'We support renewable-energy applications with electronic components used in power conversion, monitoring, control, and system protection.',
     applications: ['Solar inverters', 'Photovoltaic systems', 'Solar power plants', 'Energy monitoring', 'Battery storage systems', 'Power management', 'Solar automation', 'Solar panel cleaning robots']
   },
   {
     name: '5. Embedded Systems & IoT',
-    icon: '🌐',
+    icon: IconEmbeddedIoT,
+    category: 'Embedded Tech',
     description: 'Modern connected products depend on reliable embedded electronics for processing, sensing, communication, and control. We support embedded and IoT product development.',
     applications: ['Embedded control systems', 'IoT devices', 'Smart sensors', 'Connected equipment', 'Communication interfaces', 'Data acquisition', 'Remote monitoring', 'Smart automation']
   },
   {
     name: '6. Motion Control & Robotics',
-    icon: Bot,
+    icon: IconMotionRobotics,
+    category: 'Robotics',
     description: 'Automation, robotics, and advanced machinery require precise control of motors, movement, and machine functions.',
     applications: ['Servo systems', 'Motor control', 'Robotics', 'Motion controllers', 'Industrial robots', 'Automated machinery', 'CNC systems', 'AGV and automated equipment']
   },
   {
     name: '7. Railway & Transportation Systems',
-    icon: '🚆',
+    icon: IconRailwayTransportation,
+    category: 'Transport',
     description: 'We support railway and transportation applications where reliability, control, communication, and monitoring are essential.',
     applications: ['Railway control systems', 'Signaling systems', 'Transportation electronics', 'Communication systems', 'Monitoring equipment', 'Safety systems', 'Power management', 'Passenger information systems']
   },
   {
     name: '8. Medical & Healthcare Equipment',
-    icon: HeartPulse,
-    description: 'Electronic components are essential for the control, monitoring, communication, and power management of medical and healthcare equipment.',
-    applications: ['Medical equipment', 'Patient monitoring', 'Diagnostic systems', 'Healthcare automation', 'Control electronics', 'Power management', 'Measurement systems']
+    icon: IconMedicalHealthcare,
+    category: 'Healthcare & Medical',
+    description: 'Electronic components are essential for the control, monitoring, communication, and power management of medical manufacturing machinery and healthcare equipment.',
+    applications: ['Medical manufacturing equipment', 'Patient monitoring machinery', 'Diagnostic systems', 'Healthcare automation', 'Control electronics', 'Power management', 'Measurement systems']
   },
   {
     name: '9. Textile Machinery',
-    icon: Layers,
+    icon: IconTextileMachinery,
+    category: 'Machinery',
     description: 'We support textile machinery manufacturers with components used in machine control, automation, motion control, sensing, and electronic interfaces.',
     applications: ['Jacquard machinery', 'Embroidery machines', 'Knitting machines', 'Textile printing machines', 'Spinning and weaving equipment', 'Machine control systems', 'Motor control', 'Automation systems']
   },
   {
     name: '10. Elevator & Escalator Systems',
-    icon: '🛗',
+    icon: IconElevatorEscalator,
+    category: 'Infrastructure',
     description: 'Elevator and escalator systems require reliable electronic control, monitoring, motor-drive, and safety solutions.',
     applications: ['Elevator control systems', 'Escalator control', 'Door control', 'Motor drives', 'Safety systems', 'Position monitoring', 'Communication systems', 'Control panels']
   },
   {
     name: '11. Packaging & Processing Machinery',
-    icon: '📦',
+    icon: IconPackagingMachinery,
+    category: 'Machinery',
     description: 'We support machinery manufacturers with components for automation, motion control, sensing, and process management.',
     applications: ['Packaging machines', 'Filling machines', 'Labeling machines', 'Printing machines', 'Conveyor systems', 'Process-control equipment', 'Machine automation', 'Inspection systems']
   },
   {
     name: '12. Pharmaceutical & Laboratory Machinery',
-    icon: FlaskConical,
-    description: 'We support pharmaceutical and laboratory equipment manufacturers with components for precise control, monitoring, automation, and process management.',
-    applications: ['Pharmaceutical machinery', 'Laboratory equipment', 'Process automation', 'Temperature control', 'Monitoring systems', 'Packaging equipment', 'Measurement systems', 'Control systems']
+    icon: IconPharmaLaboratory,
+    category: 'Pharma & Lab Machinery',
+    description: 'We support pharmaceutical and laboratory machinery manufacturers with electronic components for automated tablet processing, liquid filling, capping, monitoring, and cleanroom automation equipment.',
+    applications: ['Pharmaceutical machinery', 'Automated tablet & filling equipment', 'Laboratory machinery', 'Process automation', 'Temperature control', 'Inspection & monitoring systems', 'Cleanroom control panels', 'Measurement systems']
   },
   {
     name: '13. CNC, Laser & Cutting Machinery',
-    icon: Crosshair,
+    icon: IconCNCLaser,
+    category: 'Machinery',
     description: 'Advanced manufacturing equipment requires high-performance electronics for precision control, motion, power management, and automation.',
     applications: ['CNC machines', 'Laser cutting machines', 'Diamond cutting machines', 'Motion control', 'Servo systems', 'Machine controllers', 'Power electronics', 'Automation panels']
   },
   {
     name: '14. Building Automation & Smart Infrastructure',
-    icon: '🏢',
+    icon: IconBuildingAutomation,
+    category: 'Smart Buildings',
     description: 'We support smart infrastructure applications that improve automation, monitoring, energy efficiency, and operational control.',
     applications: ['Building management systems', 'Smart lighting', 'HVAC control', 'Access control', 'Security systems', 'Energy monitoring', 'Smart sensors', 'Automated building systems']
   }
@@ -110,24 +140,54 @@ export default function Applications() {
 
       <section className="container section" data-aos="fade-up">
         <h2 style={{ textAlign: 'center', marginBottom: '3rem' }} data-aos="fade-up">Our Application Areas</h2>
-        <div className="card-grid" data-aos="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+        <div className="card-grid" data-aos="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
           {APPLICATION_AREAS.map((area, index) => {
             const IconComp = area.icon
             return (
-              <div className="card" key={area.name} style={{ padding: '2rem' }} data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem', minHeight: '52px', display: 'flex', alignItems: 'center' }}>
-                  {typeof IconComp === 'string' ? (
-                    IconComp
-                  ) : (
-                    <IconComp size={48} strokeWidth={1.8} style={{ color: 'var(--color-accent, #e8871e)' }} />
-                  )}
+              <div 
+                className="card app-card-item" 
+                key={area.name} 
+                style={{ 
+                  padding: '2rem', 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  borderRadius: '16px',
+                  background: '#ffffff',
+                  border: '1px solid rgba(226, 232, 240, 0.9)',
+                  boxShadow: '0 4px 20px rgba(15, 43, 72, 0.05)',
+                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+                }} 
+                data-aos="fade-up" 
+                data-aos-delay={(index % 3) * 100}
+              >
+                <div 
+                  className="app-icon-container" 
+                  style={{ 
+                    marginBottom: '1.25rem', 
+                    height: '75px', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'flex-start'
+                  }}
+                >
+                  <IconComp />
                 </div>
-                <h3 style={{ marginBottom: '1rem' }}>{area.name}</h3>
-                <p style={{ marginBottom: '1.5rem' }}>{area.description}</p>
-                <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Applications include:</h4>
-                <ul style={{ paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                  {area.applications.map(app => <li key={app}>{app}</li>)}
-                </ul>
+                <h3 style={{ marginBottom: '0.75rem', fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-primary-dark, #0f2b48)' }}>
+                  {area.name}
+                </h3>
+                <p style={{ marginBottom: '1.25rem', color: '#475569', fontSize: '0.92rem', lineHeight: 1.6, flexGrow: 1 }}>
+                  {area.description}
+                </p>
+                <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '1rem' }}>
+                  <h4 style={{ fontSize: '0.9rem', marginBottom: '0.5rem', fontWeight: 700, color: 'var(--color-accent, #e8871e)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>
+                    Applications include:
+                  </h4>
+                  <ul style={{ paddingLeft: '1.2rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '0.86rem', color: '#64748b' }}>
+                    {area.applications.map(app => <li key={app}>{app}</li>)}
+                  </ul>
+                </div>
               </div>
             )
           })}

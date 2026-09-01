@@ -223,7 +223,7 @@ export default function Privacy() {
                 Vinzol Vatva GIDC, Ahmedabad &ndash; 382440, Gujarat, India
               </p>
               <p style={{ margin: '0.5rem 0 0', fontSize: '0.9rem' }}>
-                <strong>Email:</strong> <a href="mailto:info@myzektechnologies.com" style={{ color: 'var(--color-accent, #E07B24)' }}>info@myzektechnologies.com</a><br />
+                <strong>Email:</strong> <a href="mailto:sales@myzektechnologies.in" style={{ color: 'var(--color-accent, #E07B24)' }}>sales@myzektechnologies.in</a><br />
                 <strong>Phone:</strong> <a href="tel:+918347469999" style={{ color: 'var(--color-accent, #E07B24)' }}>+91 83474 69999</a>
               </p>
             </div>

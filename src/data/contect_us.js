@@ -11,7 +11,7 @@ const details = [
     phoneLink: '+918347469999',
     whatsapp: '+91 83474 69999',
     whatsappLink: '918347469999',
-    email: 'info@myzektechnologies.com',
+    email: 'sales@myzektechnologies.in',
     businessHours: [
       'Monday – Saturday',
       '9:00 AM – 6:00 PM'

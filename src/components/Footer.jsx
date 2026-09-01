@@ -43,9 +43,9 @@ export default function Footer() {
           </p>
           <div style={{ marginTop: '1.5rem' }}>
             <p className="new-footer-text" style={{ fontSize: '0.8rem' }}>
-              Email: info@myzektechnologies.com<br />
-              Phone: +91 83474 69999 <br/>
-              Whatsapp.no:+91 83474 69999
+              Email: <a href="mailto:sales@myzektechnologies.in" style={{ color: 'inherit' }}>sales@myzektechnologies.in</a><br />
+              Phone: <a href="tel:+918347469999" style={{ color: 'inherit' }}>+91 83474 69999</a><br />
+              WhatsApp: <a href="https://wa.me/918347469999" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>+91 83474 69999</a>
             </p>
           </div>
         </div>
