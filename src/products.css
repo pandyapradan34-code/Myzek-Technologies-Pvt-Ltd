@@ -329,10 +329,59 @@
   border-bottom: 1px solid #dfe4e9;
 }
 
+.series-header-enhanced {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+
+.series-header-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.series-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-left: auto;
+}
+
+.series-datasheet-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #0284c7;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  letter-spacing: normal;
+}
+
+.series-datasheet-btn:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+}
+
 .series-name {
   font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   color: var(--color-primary);
 }
 
@@ -343,7 +392,6 @@
 }
 
 .series-range {
-  margin-left: auto;
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--color-accent, #E07B24);
@@ -684,21 +732,415 @@
   border-top: 1px solid #f1f5f9;
 }
 
+.pcard-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem;
+  margin-bottom: 0.2rem;
+}
+
 .pcard-name {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--color-primary, #0f2b48);
-  margin: 0 0 0.2rem;
+  margin: 0;
   line-height: 1.35;
   word-break: break-word;
 }
 
+.pcard-series-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #475569;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.pcard-badge-inline {
+  background: var(--color-primary, #0f2b48);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
 .pcard-spec {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: #64748b;
   margin: 0;
   letter-spacing: 0.03em;
+}
+
+.pcard-desc {
+  font-size: 0.75rem;
+  color: #4b5563;
+  line-height: 1.45;
+}
+
+.pcard-stock-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+}
+
+.pcard-stock-label {
+  color: #64748b;
+}
+
+.pcard-stock-val {
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}
+
+.pcard-stock-val.in-stock {
+  color: #059669;
+  background: #ecfdf5;
+}
+
+.pcard-stock-val.out-stock {
+  color: #dc2626;
+  background: #fef2f2;
+}
+
+/* Actions: Datasheet & Inquire buttons */
+.pcard-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.pcard-datasheet-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #0284c7;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.pcard-datasheet-btn:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+}
+
+.pcard-inquire-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.32rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #334155;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.pcard-inquire-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* CLAF Product Groups & Banner Styling */
+.claf-product-groups-section {
+  margin: 1.5rem 0 1rem 0;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+}
+
+.claf-group-selector-header {
+  margin-bottom: 0.5rem;
+}
+
+.claf-group-selector-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.claf-group-nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.claf-group-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.claf-group-tab:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.claf-group-tab.active {
+  background: var(--color-primary, #0f2b48);
+  color: #ffffff;
+  border-color: var(--color-primary, #0f2b48);
+  box-shadow: 0 2px 6px rgba(15, 43, 72, 0.2);
+}
+
+/* Interactive CLAF Group & Subgroup Accordion - Professional Light Theme */
+.claf-major-group-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(15, 43, 72, 0.04);
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.claf-major-group-section:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 3px 10px rgba(15, 43, 72, 0.06);
+}
+
+.claf-group-accordion-header {
+  background: linear-gradient(180deg, #fbfcfe 0%, #f1f5f9 100%);
+  color: #0f2b48;
+  padding: 0.95rem 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.claf-group-accordion-header:hover {
+  background: #f1f5f9;
+}
+
+.claf-group-accordion-header.open {
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.claf-group-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.claf-group-accordion-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #0f2b48;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.claf-group-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.group-accordion-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+  transition: transform 0.25s ease;
+}
+
+.group-accordion-chevron.open {
+  transform: rotate(180deg);
+}
+
+.claf-group-banner-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.claf-group-models-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.claf-subgroups-body {
+  padding: 1rem 1.15rem 0.5rem 1.15rem;
+  background: #ffffff;
+}
+
+.claf-subgroup-block {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.claf-subgroup-block:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(15, 43, 72, 0.04);
+}
+
+.series-accordion-header {
+  cursor: pointer;
+  user-select: none;
+  border-bottom: none;
+  padding-bottom: 0.15rem;
+  margin-bottom: 0.15rem;
+  transition: opacity 0.2s ease;
+}
+
+.series-accordion-header.open {
+  border-bottom: 1.5px solid #f1f5f9;
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.subgroup-accordion-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  transition: transform 0.25s ease;
+}
+
+.subgroup-accordion-chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Intermediate Section Level 2 Accordions (e.g. Fixed Input, Wide Input, Non-isolated) */
+.claf-section-block {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(15, 43, 72, 0.02);
+}
+
+.claf-section-accordion-header {
+  background: #f8fafc;
+  color: #1e293b;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.claf-section-accordion-header:hover {
+  background: #f1f5f9;
+}
+
+.claf-section-accordion-header.open {
+  border-bottom: 1px solid #e2e8f0;
+  background: #f1f5f9;
+}
+
+.claf-section-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.section-accordion-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  transition: transform 0.25s ease;
+}
+
+.section-accordion-chevron.open {
+  transform: rotate(180deg);
+}
+
+.claf-section-title {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.claf-section-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.claf-section-body {
+  padding: 0.85rem 0.85rem 0.25rem 0.85rem;
+  background: #ffffff;
 }
 
 /* ---------- responsive ---------- */
@@ -751,7 +1193,24 @@
     padding: 0.6rem;
   }
 }
-  .series-block {
-    margin-bottom: 2rem;
+
+@media (max-width: 640px) {
+  .claf-group-accordion-header {
+    padding: 0.9rem 1rem;
+  }
+  .claf-group-accordion-title {
+    font-size: 1rem;
+  }
+  .claf-subgroups-body {
+    padding: 0.75rem 0.5rem;
+  }
+  .claf-subgroup-block {
+    padding: 0.75rem 0.6rem;
   }
 }
+
+.series-block {
+  margin-bottom: 2rem;
+}
+
+
